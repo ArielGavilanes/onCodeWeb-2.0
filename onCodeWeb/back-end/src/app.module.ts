@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CursosModule } from './cursos/cursos.module';
+import { SequelizeModule } from '@nestjs/sequelize';
+
+import { OnCodeWebModule } from './on-code-web/on-code-web.module';
+import { OnCodeBankModule } from './on-code-bank/on-code-bank.module';
 
 @Module({
-  imports: [CursosModule],
+  imports: [
+    OnCodeWebModule,
+    OnCodeBankModule,
+    ],
   controllers: [AppController],
   providers: [AppService],
 })
