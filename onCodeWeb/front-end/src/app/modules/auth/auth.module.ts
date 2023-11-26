@@ -6,7 +6,6 @@ import { BackgroundRowComponent } from './components/register/components/backgro
 import { SelectRolComponent } from './components/register/components/select-rol/select-rol.component';
 import { EnterDataComponent } from './components/register/components/enter-data/enter-data.component';
 import { CreateUserComponent } from './components/register/components/create-user/create-user.component';
-import { AuthRoutingModule } from './auth-routing.module';
 
 
 
@@ -21,7 +20,6 @@ import { AuthRoutingModule } from './auth-routing.module';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule,
   ]
 })
 export class AuthModule { }
