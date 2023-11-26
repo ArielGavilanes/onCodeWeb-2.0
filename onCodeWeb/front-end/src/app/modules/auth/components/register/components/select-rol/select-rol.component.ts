@@ -19,5 +19,6 @@ export class SelectRolComponent implements OnInit {
 
   getRoles() {
     this.roles = this.authService.roles
+    console.log(this.roles)
   }
 }
