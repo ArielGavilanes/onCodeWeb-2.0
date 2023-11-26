@@ -7,8 +7,9 @@
     <div class="rol-body">
         <select class="form-select" aria-label="rol-select">
             <option selected>Selecciona un rol</option>
-            <option value="1">Estudiante</option>
-            <option value="2">Creador</option>
+            <div *ngFor="let rol of roles">
+                <option  value="{{rol.id_rol}}">{{rol.descripcion}}</option>
+            </div>
         </select>
     </div>
     <div class="rol-footer">
