@@ -1,0 +1,15 @@
+.row {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    padding: 50px;
+    display: flex;
+}
+
+.col-md-8 {
+    padding: 0;
+}
+
+.col-md-4{
+    padding: 0;
+}
