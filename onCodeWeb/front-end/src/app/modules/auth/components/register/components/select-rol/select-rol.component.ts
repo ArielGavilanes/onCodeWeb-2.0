@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/modules/auth/auth.service';
 export class SelectRolComponent implements OnInit {
 
   roles: Roles[] = []
-  
+
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
