@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { RolesService } from 'src/app/database/services/roles.service';
-import { Roles } from 'src/app/database/interfaces/roles.interface';
+import { ResponseRoles, Roles } from 'src/app/database/interfaces/roles.interface';
+import { Observable, map, retry, tap } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  roles: Roles[] = []
+  roles: ResponseRoles = { roles: [] };
 
   constructor(private rolesService: RolesService) { 
     this.getRoles()
   }
 
-    getRoles(): void {
-    this.rolesService.getRoles().subscribe(roles => {
-        this.roles = roles;
-    });
+  getRoles(): Observable<ResponseRoles>  {
+    return this.rolesService.getRoles().pipe(
+      tap(response => {
+        this.roles = response;
+      }),
+    );
+  }
 }
-}
+  
