@@ -8,17 +8,27 @@ import { AuthService } from 'src/app/modules/auth/auth.service';
   styleUrls: ['./select-rol.component.css']
 })
 export class SelectRolComponent implements OnInit {
+  
 
-  roles: Roles[] = []
+    // Variable local para almacenar los roles en el componente
+    roles: Roles[] = [];
 
-  constructor(private authService: AuthService) { }
-
-  ngOnInit(): void {
-    this.getRoles()
+    constructor(private authService: AuthService) { }
+  
+    ngOnInit() {
+      this.getRoles();
+    }
+  
+    // Método para obtener los roles
+    getRoles() {
+      this.authService.getRoles().subscribe(
+        response => {
+          // Puedes acceder directamente a los roles desde response.roles
+          this.roles = response.roles;
+          console.log(this.roles)
+        },
+        err => console.log(err)
+      );
+    } 
   }
 
-  getRoles() {
-    this.roles = this.authService.roles
-    console.log(this.roles)
-  }
-}
