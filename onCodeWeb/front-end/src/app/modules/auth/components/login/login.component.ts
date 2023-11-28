@@ -1,58 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginRequest } from '../services/loginRequest';
-import { FormBuilder, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginService } from '../services/login.services';
+import { AuthService } from '../../auth.service';
+import { UsuarioLogin } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit {
-  loginError:string="";
-  loginForm=this.formBuilder.group({
-    email:['iva@gmail.com',[Validators.required,Validators.email]],
-    password: ['',Validators.required],
-  })
-  constructor(private formBuilder:FormBuilder, private router:Router, private loginService: LoginService) { }
+export class LoginComponent {
+  //user y password vacio
+  user: UsuarioLogin = { username: '', password: '' };
+  errorMessage = '';
 
-  ngOnInit(): void {
-  }
+  constructor(private authService: AuthService) {}
 
-  get email(){
-    return this.loginForm.controls.email;
-  }
-
-  get password()
-  {
-    return this.loginForm.controls.password;
-  }
-
-  login(){
-    if(this.loginForm.valid){
-      this.loginError="";
-      this.loginService.login(this.loginForm.value as LoginRequest).subscribe({
-        next: (userData) => {
-          console.log(userData);
-        },
-        error: (errorData) => {
-          console.error(errorData);
-          this.loginError=errorData;
-        },
-        complete: () => {
-          console.info("Login completo");
-          this.router.navigateByUrl('/inicio');
-          this.loginForm.reset();
-        }
-      })
-
-    }
-    else{
-      this.loginForm.markAllAsTouched();
-      alert("Error al ingresar los datos.");
+  login(): void {
+    if (this.isInputValid()) {
+      if (this.authService.login(this.user)) {
+        console.log('Inicio de sesión');
+      } else {
+        this.errorMessage = 'Nombre de usuario o contraseña incorrectos';
+      }
+    } else {
+      this.errorMessage = 'Nombre de usuario y contraseña deben tener máximo 15 caracteres';
     }
   }
-
+//validacion de 15 caracteres
+  private isInputValid(): boolean {
+    return this.user.username.length <= 15 && this.user.password.length <= 15;
+  }
 }
-

@@ -6,6 +6,7 @@ import { BackgroundRowComponent } from './components/register/components/backgro
 import { SelectRolComponent } from './components/register/components/select-rol/select-rol.component';
 import { EnterDataComponent } from './components/register/components/enter-data/enter-data.component';
 import { CreateUserComponent } from './components/register/components/create-user/create-user.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -20,6 +21,7 @@ import { CreateUserComponent } from './components/register/components/create-use
   ],
   imports: [
     CommonModule,
+    FormsModule
   ]
 })
 export class AuthModule { }
