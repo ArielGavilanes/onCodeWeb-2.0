@@ -24,6 +24,7 @@ import { Contenido } from './contenido/models/contenido.model';
 import { MetodosPago } from './metodos-pago/models/metodos-pago.model';
 import { DetalleTransacciones } from './detalle-transacciones/models/detalle-transacciones.model';
 import { Transacciones } from './transacciones/models/transacciones.model';
+import { InsertUsuarioModule } from './insert-usuario/insert-usuario.module';
 
 const models = [
     Roles,
@@ -65,7 +66,8 @@ const models = [
         CursosModule,
         MetodosPagoModule,
         DetalleTransaccionesModule,
-        TransaccionesModule
+        TransaccionesModule,
+        InsertUsuarioModule,
     ]
 })
 export class OnCodeWebModule { }

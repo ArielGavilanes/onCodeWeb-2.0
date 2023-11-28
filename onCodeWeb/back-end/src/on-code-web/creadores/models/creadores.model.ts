@@ -66,7 +66,7 @@ export class Creadores extends Model {
     @ForeignKey(() => MetodosPago)
     @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
     })
     id_metodo_pago: number;
 
