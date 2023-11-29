@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EnterDataComponent } from './enter-data.component';
+import { LoginFormComponent } from './login-form.component';
 
-describe('EnterDataComponent', () => {
-  let component: EnterDataComponent;
-  let fixture: ComponentFixture<EnterDataComponent>;
+describe('LoginFormComponent', () => {
+  let component: LoginFormComponent;
+  let fixture: ComponentFixture<LoginFormComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [EnterDataComponent]
+      declarations: [LoginFormComponent]
     });
-    fixture = TestBed.createComponent(EnterDataComponent);
+    fixture = TestBed.createComponent(LoginFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

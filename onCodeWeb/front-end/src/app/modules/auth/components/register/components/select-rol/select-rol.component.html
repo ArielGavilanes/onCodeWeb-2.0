@@ -1,16 +1,129 @@
-<div class="select-rol">
-    <div class="rol-header">
+<div class="form-container">
+    <div class="form-header">
         <img src="https://icones.pro/wp-content/uploads/2021/04/symbole-d-ordinateur-noir.png" alt="">
         <h1>Bienvenido a onCodeWeb!</h1>
-        <p>Para empezar selecciona un rol</p>
+        <p>Vamos a registrarnos</p>
     </div>
-    <div class="rol-body">
-        <select class="form-select" aria-label="rol-select">
-            <option selected>Selecciona un rol</option>
-            <option *ngFor="let rol of roles" [value]="rol.id_rol">{{rol.descripcion}}</option>
-        </select>
-    </div>
-    <div class="rol-footer">
-        <button class="btn btn-dark">Siguiente</button>
-    </div>
+    <form class="row g-3 needs-validation" registerForm="ngForm" (ngSubmit)="insertUsuario()">
+        <div class="col-md-6">
+            <label for="cedula" class="form-label">Cedula</label>
+            <input type="text" class="form-control" id="cedula" value="" name="cedula"  [(ngModel)]="nuevoUsuario.cedula" required>
+            <div class="invalid-feedback">
+                Llena este campo
+            </div>
+            <div class="valid-feedback">
+                Excelente!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="usuario" class="form-label">Nombre de usuario</label>
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend"></span>
+                <input type="text" class="form-control" id="usuario"
+                    name="usuario" [(ngModel)]="nuevoUsuario.usuario" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Please choose a username.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="primer_nombre" class="form-label">Primer nombre</label>
+            <input type="text" class="form-control" id="primer_nombre" value="" name="primer_nombre" [(ngModel)]="nuevoUsuario.primer_nombre" required>
+            <div class="invalid-feedback">
+                Llena este campo
+            </div>
+            <div class="valid-feedback">
+                Excelente!
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="segundo_nombre" class="form-label">Segundo nombre</label>
+            <input type="text" class="form-control" id="segundo_nombre" value="" name="segundo_nombre" [(ngModel)]="nuevoUsuario.segundo_nombre" required>
+            <div class="invalid-feedback">
+                Llena este campo
+            </div>
+            <div class="valid-feedback">
+                Excelente!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="primer_apellido" class="form-label">Primer apellido</label>
+            <input type="text" class="form-control" id="primer_apellidp" value="" name="primer_apellido" [(ngModel)]="nuevoUsuario.primer_apellido"  required>
+            <div class="invalid-feedback">
+                Llena este campo
+            </div>
+            <div class="valid-feedback">
+                Excelente!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="segundo_apellido" class="form-label">Segundo apellido</label>
+            <input type="text" class="form-control" id="segundo_apellido" value="" name="segundo_apellido" [(ngModel)]="nuevoUsuario.segundo_apellido" required>
+            <div class="invalid-feedback">
+                Llena este campo
+            </div>
+            <div class="valid-feedback">
+                Excelente!
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="rol" class="form-label">Escoge tu rol</label>
+            <select class="form-select" id="rol" name="rol" [(ngModel)]="nuevoUsuario.id_rol" required>
+                <option selected>Selecciona un rol</option>
+                <option *ngFor="let rol of roles" [value]="rol.id_rol">{{rol.descripcion}}</option>
+            </select>
+            <div class="invalid-feedback">
+                Selecciona un rol
+            </div>
+            <div class="valid-feedback">
+                Gran eleccion!
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label for="email" class="form-label">Correo electronico</label>
+            <div class="input-group has-validation">
+                <input type="text" class="form-control" id="email"
+                    aria-describedby="inputGroupPrepend" name="email" [(ngModel)]="nuevoUsuario.email"  required >
+                <div class="invalid-feedback">
+                    Llena este campo
+                </div>
+                <div class="valid-feedback">
+                    Grandioso!
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="contrasena" class="form-label">Contraseña</label>
+            <div class="input-group has-validation">
+                <input type="password" class="form-control" id="contrasena"
+                    aria-describedby="inputGroupPrepend" name="contrasena" [(ngModel)]="nuevoUsuario.contrasena" required>
+                <div id="passwordHelpBlock" class="form-text">
+                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain
+                    spaces, special characters, or emoji.
+                </div>
+                <div class="invalid-feedback">
+                    Llena este campo
+                </div>
+                <div class="valid-feedback">
+                    Correcto!
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="contrasenaConfirm" class="form-label">Confirmar contraseña</label>
+            <div class="input-group has-validation">
+                <input type="password" class="form-control" id="contrasenaConfirm"
+                    aria-describedby="inputGroupPrepend" name="contrasenaConfirm" [(ngModel)]="contrasenaConfirm" required>
+                <div class="invalid-feedback">
+                    Llena este campo
+                </div>
+                <div class="valid-feedback">
+                    Todo correcto!
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <button class="btn btn-dark" type="submit">Crear cuenta</button>
+        </div>
+    </form>
 </div>

@@ -1,46 +1,25 @@
-.select-rol {
+.form-header {
     width: 100%;
     height: 100%;
-    background-color: rgb(237, 237, 237);
     margin: auto;
-    border-radius: 0 7px 7px 0;
     padding: 10px;
-}
-
-h1, p{
     text-align: center;
 }
 
-h1 {
-    font-weight: bold;
-}
-p {
-    padding: 5px;
-    font-size: 18px;
-}
 
-.rol-header img {
-    width: 30%;
-    height: 30%;
+
+.form-header img {
+    width: 5%;
+    height: 5%;
     object-fit: cover;
 }
 
-.rol-header {
-    display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
+.form-header h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
 }
-.rol-body{
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    padding: 15px;
-}   
-
-.rol-footer {
-    display: flex;
-    justify-content: flex-end; 
-    margin-top: 50px;
-    padding: 15px;
+.form-container form {
+    padding: 10px;
 }
