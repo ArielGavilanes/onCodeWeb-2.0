@@ -1,15 +1,17 @@
 .row {
-    height: 100vh;
+    height: 100%;
     margin: 0;
     padding: 0;
     padding: 50px;
     display: flex;
 }
 
-.col-md-6 {
+.col-md-7 {
     padding: 0;
+    background-color: rgb(237, 237, 237);
+    border-radius: 0 7px 7px 0;
 }
 
-.col-md-6 {
+.col-md-5 {
     padding: 0;
 }
