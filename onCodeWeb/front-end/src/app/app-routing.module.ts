@@ -4,8 +4,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { LoginComponent } from './modules/auth/components/login/login.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'/inicio', pathMatch:'full'},
-  {path:'iniciar-sesion',component:LoginComponent}
+  {path:'',redirectTo:'/login', pathMatch:'full'},
 ];
 
 @NgModule({
