@@ -45,13 +45,13 @@ export class Estudiantes extends Model {
 
     @Column({
     type: DataType.STRING(255),
-    allowNull: false
+    allowNull: true
     })
     url_foto_perfil: string;
 
     @Column({
     type: DataType.STRING(255),
-    allowNull: false
+    allowNull: true
     })
     url_foto_portada: string;
 
@@ -65,7 +65,7 @@ export class Estudiantes extends Model {
     @ForeignKey(() => MetodosPago)
     @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
     })
     id_metodo_pago: number;
 
