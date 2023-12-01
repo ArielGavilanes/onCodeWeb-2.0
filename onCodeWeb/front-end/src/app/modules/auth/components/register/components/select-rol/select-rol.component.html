@@ -69,15 +69,8 @@
         <div class="col-md-4">
             <label for="rol" class="form-label">Escoge tu rol</label>
             <select class="form-select" id="rol" name="rol" [(ngModel)]="nuevoUsuario.id_rol" required>
-                <option selected>Selecciona un rol</option>
                 <option *ngFor="let rol of roles" [value]="rol.id_rol">{{rol.descripcion}}</option>
             </select>
-            <div class="invalid-feedback">
-                Selecciona un rol
-            </div>
-            <div class="valid-feedback">
-                Gran eleccion!
-            </div>
         </div>
         <div class="col-md-12">
             <label for="email" class="form-label">Correo electronico</label>
