@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Roles } from 'src/app/database/interfaces/roles.interface';
 import { UsuarioCredentials } from 'src/app/database/interfaces/usuarioCredentials.interface';
 import { UsuarioLogin } from 'src/app/interfaces/user';
@@ -24,7 +25,9 @@ export class LoginFormComponent {
   
   errorMessage = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+    private router: Router
+    ) {}
 
 
   // login(): void {
@@ -54,7 +57,7 @@ export class LoginFormComponent {
       (res: any) => {
         console.log('Token', res.token)
         localStorage.setItem('token', res.token)
-
+        this.router.navigate(['/dashboard']);
       },
     (err: Error) => {
       console.log('Error', err)
