@@ -52,7 +52,6 @@ export class SelectRolComponent implements OnInit {
 
     insertUsuario() {
       this.nuevoUsuario.id_rol = Number(this.nuevoUsuario.id_rol);
-      
       this.authService.insertUsuario(this.nuevoUsuario)
       .subscribe(
         res => console.log('Usuario creado correctamente', res),
