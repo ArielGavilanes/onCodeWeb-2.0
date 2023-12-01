@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { UsuarioCredentials } from '../interfaces/usuarioCredentials.interface';
 
 @Injectable({
@@ -14,5 +14,12 @@ export class AuthBackService {
 
   loginValidation(usuarioCredentials: UsuarioCredentials) : Observable<{token: string}> {
     return this.http.post<{token: string}>(`${this.BASE_URL}/auth/login`, usuarioCredentials)
+    .pipe(
+      catchError(error => {
+        console.error('Error en la solicitud HTTP:', error);
+        throw error; // Puedes manejar el error aquí según tus necesidades
+      })
+    );
   }
 }
+
