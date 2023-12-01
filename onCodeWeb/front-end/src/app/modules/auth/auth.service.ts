@@ -58,6 +58,7 @@ export class AuthService {
   //Metodo para la validacion de credenciales en login
   loginValidation(usuarioCredentials: UsuarioCredentials): Observable<{token: string}> {
     return this.authBackService.loginValidation(usuarioCredentials)
+  
   }
 
 

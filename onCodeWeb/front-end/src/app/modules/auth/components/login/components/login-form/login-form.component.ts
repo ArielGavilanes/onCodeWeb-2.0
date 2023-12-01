@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Roles } from 'src/app/database/interfaces/roles.interface';
 import { UsuarioCredentials } from 'src/app/database/interfaces/usuarioCredentials.interface';
-import { UsuarioLogin } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { AuthService } from 'src/app/modules/auth/auth.service';
   templateUrl: './login-form.component.html',
   styleUrls: ['./login-form.component.css']
 })
-export class LoginFormComponent {
+export class LoginFormComponent implements OnInit{
   //user y password vacio
   usuarioCredentials: UsuarioCredentials = 
   {
@@ -29,6 +28,9 @@ export class LoginFormComponent {
     private router: Router
     ) {}
 
+  ngOnInit() {
+    this.getRoles();
+  }
 
   // login(): void {
   //   if (this.isInputValid()) {
