@@ -1,5 +1,4 @@
 import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
-import { error } from 'console';
 import { AuthUsuarioDTO } from 'src/auth/dto/authLogin.dto';
 import { AuthUsuarioService } from 'src/auth/services/auth-usuario/auth-usuario.service';
 
@@ -10,7 +9,7 @@ export class AuthUsuarioController {
         private authUsuarioService: AuthUsuarioService
     ) {}
     
-    @Post('login')
+    @Post('/login')
     async loginValidation(@Body() authUsuarioDTO: AuthUsuarioDTO): Promise<{token: string}> {
         
         //Validar credenciales usando authUsuario de authUsuarioService
