@@ -13,6 +13,6 @@ export class AuthBackService {
   constructor(private http: HttpClient) { }
 
   loginValidation(usuarioCredentials: UsuarioCredentials) : Observable<{token: string}> {
-    return this.http.post<{token: string}>(`${this.BASE_URL}/login`, usuarioCredentials)
+    return this.http.post<{token: string}>(`${this.BASE_URL}/auth/login`, usuarioCredentials)
   }
 }
