@@ -5,8 +5,4 @@ export interface Roles {
 
 export interface ResponseRoles {
     roles: Roles[];
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> front-end
