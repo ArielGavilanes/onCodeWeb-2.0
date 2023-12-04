@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SearchCursos } from 'src/app/database/interfaces/cursos.interface';
+import { Cursos, SearchCursos } from 'src/app/database/interfaces/cursos.interface';
 import { SearchService } from './search.service';
 
 @Component({
@@ -9,6 +9,7 @@ import { SearchService } from './search.service';
 })
 export class SearchComponent {
 
+  cursos: Cursos[] = []
   searchParam : SearchCursos  = {
     nombre_curso : ''
   }
@@ -22,7 +23,10 @@ export class SearchComponent {
     this.searchParam.nombre_curso = this.searchParam.nombre_curso.toLowerCase()
     this.searchService.searchCursoByLike(this.searchParam).subscribe 
     (
-      res => console.log(res),
+      res => {
+      console.log(res)
+      this.cursos = res
+    },
       err => console.log(err)
     )
   }
