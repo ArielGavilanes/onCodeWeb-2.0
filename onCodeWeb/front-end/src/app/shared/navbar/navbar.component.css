@@ -1,0 +1,53 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(201, 201, 201);
+    padding: 10px;
+}
+
+.logo {
+    max-width: 100px;
+}
+
+.botones a {
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.botones a::before,
+.botones a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: black;
+    transition: width 0.3s ease-in-out;
+}
+
+.botones a::before {
+    top: 0;
+    left: 0;
+}
+
+.botones a::after {
+    bottom: 0;
+    right: 0;
+}
+
+.botones a:hover::before,
+.botones a:hover::after {
+    width: 100%;
+}
+
+.botones i{
+    font-size: 130%;
+    margin-right: 8px;
+}
+

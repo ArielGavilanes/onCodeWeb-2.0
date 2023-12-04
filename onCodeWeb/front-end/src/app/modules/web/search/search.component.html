@@ -1,0 +1,13 @@
+<div class="search-form">
+    <h1>¿Que buscaras hoy?</h1>
+    <form searchForm="ngForm" (ngSubmit)="searchResults()">
+        <input type="text" class="form-control" id="nombre_curso" [(ngModel)]="searchParam.nombre_curso" name="nombre_curso"
+            placeholder="Buscar cursos">
+    </form>
+</div>
+<!-- <div ngIf="">
+
+</div> -->
+<div class="search-results">
+    
+</div>

@@ -6,18 +6,22 @@ import { InicioComponent } from './inicio/inicio.component';
 import { CarouselComponent } from './inicio/components/carousel/carousel.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { WebComponent } from './web/web.component';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     InicioComponent,
     CarouselComponent,
-    WebComponent
+    WebComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
     WebRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class WebModule { }

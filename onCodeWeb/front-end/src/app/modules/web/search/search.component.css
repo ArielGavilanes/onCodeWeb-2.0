@@ -1,0 +1,32 @@
+.search-form {
+    background: linear-gradient(to top, rgb(146, 146, 146), rgb(237, 237, 237));
+    padding: 40px;
+    flex-direction: column;
+    align-items: center;
+    width: 99%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1%;
+    border-radius: 10px;
+}
+
+.search-form h1 {
+    padding: 15px;
+    text-align: center;
+}
+
+.search-form input {
+    width: 50%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.search-results {
+    width: 99%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1%;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(237, 237, 237);
+}
