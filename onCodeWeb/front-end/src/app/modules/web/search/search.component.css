@@ -29,8 +29,12 @@
     border-radius: 10px;
     padding: 10px;
     background-color: rgb(237, 237, 237);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 i {
     color: goldenrod;
 }
+
