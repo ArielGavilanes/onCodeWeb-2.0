@@ -7,6 +7,7 @@ import { CarouselComponent } from './inicio/components/carousel/carousel.compone
 import { SharedModule } from 'src/app/shared/shared.module';
 import { WebComponent } from './web/web.component';
 import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SearchComponent } from './search/search.component';
   imports: [
     CommonModule,
     WebRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class WebModule { }

@@ -7,19 +7,14 @@ import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   {
-    // path: '', component: WebComponent,
-    // children: [
-    //   { path:'dashboard', component:InicioComponent,
-    //   children: [
-    //     { path: 'inicio', component:CarouselComponent},
-    //     { path: 'buscar', component:SearchComponent}
-    //   ]
-    // }
-    // ]
-    path: 'inicio', component: WebComponent,
-  },
-  // { path:'', redirectTo: '/dashboard', pathMatch:''}
+    path: '', component: WebComponent,
+      children: [
+        { path: 'inicio', component: InicioComponent },
+        { path: 'search', component: SearchComponent}
+      ]
+    }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
