@@ -24,7 +24,8 @@ import { Contenido } from './contenido/models/contenido.model';
 import { MetodosPago } from './metodos-pago/models/metodos-pago.model';
 import { DetalleTransacciones } from './detalle-transacciones/models/detalle-transacciones.model';
 import { Transacciones } from './transacciones/models/transacciones.model';
-import { InsertUsuarioModule } from './insert-usuario/insert-usuario.module';
+import { InsertUsuarioModule } from './functions/insert-usuario/insert-usuario.module';
+import { SearchSystemModule } from './functions/search-system/search-system.module';
 
 const models = [
     Roles,
@@ -68,6 +69,7 @@ const models = [
         DetalleTransaccionesModule,
         TransaccionesModule,
         InsertUsuarioModule,
+        SearchSystemModule
     ]
 })
 export class OnCodeWebModule { }

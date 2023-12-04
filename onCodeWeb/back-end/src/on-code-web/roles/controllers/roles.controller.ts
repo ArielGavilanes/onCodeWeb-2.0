@@ -8,7 +8,7 @@ export class RolesController {
         private rolesService: RolesService
     ) {}
     
-    @Get('/'    )
+    @Get('/')
     async getRoles(@Res() res): Promise<Roles[]> {
         const getRoles = await this.rolesService.getRoles()
         return res.status(HttpStatus.OK).json({
