@@ -1,13 +1,31 @@
 <div class="search-form">
     <h1>¿Que buscaras hoy?</h1>
     <form searchForm="ngForm" (ngSubmit)="searchResults()">
-        <input type="text" class="form-control" id="nombre_curso" [(ngModel)]="searchParam.nombre_curso" name="nombre_curso"
-            placeholder="Buscar cursos">
+        <input type="text" class="form-control" id="nombre_curso" [(ngModel)]="searchParam.nombre_curso"
+            name="nombre_curso" placeholder="Buscar cursos">
     </form>
 </div>
-<!-- <div ngIf="">
 
-</div> -->
-<div class="search-results">
-    
+<div *ngIf="cursos.length < 0" ; else #sinResults>
+    <div class="search-results">
+        <div *ngFor="let curso of cursos">
+            <div class="card" style="width: 18rem;">
+                <img src="{{curso.url_foto_portada}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{curso.nombre}}</h5>
+                    <p class="card-text">{{curso.descripcion}}</p>
+                    <div *ngIf="curso.premium" class="corona-icon">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<ng-template #sinResults>
+    <!-- Contenido si el array está vacío -->
+    <div class="search-results">
+        <h2>Sin resultados</h2>
+    </div>
+</ng-template>
