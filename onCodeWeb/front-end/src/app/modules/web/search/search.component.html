@@ -6,13 +6,13 @@
     </form>
 </div>
 
-<div *ngIf="cursos.length < 0" ; else #sinResults>
+<div *ngIf="cursos.length > 0; else sinResults">
     <div class="search-results">
         <div *ngFor="let curso of cursos">
             <div class="card" style="width: 18rem;">
                 <img src="{{curso.url_foto_portada}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{curso.nombre}}</h5>
+                    <h5 class="card-title">{{ curso.nombre.charAt(0).toUpperCase() + curso.nombre.slice(1)  }}</h5>
                     <p class="card-text">{{curso.descripcion}}</p>
                     <div *ngIf="curso.premium" class="corona-icon">
                         <i class="fa-solid fa-crown"></i>
@@ -20,12 +20,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>  
 </div>
 
 <ng-template #sinResults>
-    <!-- Contenido si el array está vacío -->
     <div class="search-results">
         <h2>Sin resultados</h2>
-    </div>
+    </div>  
 </ng-template>
+
