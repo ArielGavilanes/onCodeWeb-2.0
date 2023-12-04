@@ -13,5 +13,4 @@ import { Usuarios } from './models/usuarios.model';
     providers: [
         UsuarioService
     ]
-})
-export class UsuariosModule {}
+})export class UsuariosModule {}
