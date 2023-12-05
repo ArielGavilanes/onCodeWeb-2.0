@@ -1,4 +1,4 @@
-export interface Estudiantes {
+export interface Creadores {
     cedula: string
     primer_nombre: string
     segundo_nombre: string

@@ -7,34 +7,28 @@ import { UsuarioService } from 'src/on-code-web/usuarios/services/usuario/usuari
 @Injectable()
 export class AuthUsuarioService {
 
-    constructor (
+    constructor(
         private jwtService: JwtService,
         private usuariosService: UsuarioService
-    ) {}
+    ) { }
 
     //Utilizar el servicio Usuario para comprobar las credenciales del usuario
-    async authUsuario(authUsuarioDTO: AuthUsuarioDTO): Promise <UsuarioCredentials | null> {
-        const usuario =  await this.usuariosService.loginUsuarios(authUsuarioDTO)
-        
+    async authUsuario(authUsuarioDTO: AuthUsuarioDTO): Promise<string | null> {
+        const usuario = await this.usuariosService.loginUsuarios(authUsuarioDTO)
+
         if (usuario) {
             const {
                 id_usuario,
                 id_rol
             } = usuario
 
-            const usuarioCredentials: UsuarioCredentials = {id_rol, id_usuario}
-            
-            return usuarioCredentials
+            const payload = { sub: id_usuario, usuario: authUsuarioDTO.usuario, id_rol };
+
+            const token = await this.jwtService.signAsync(payload);
+
+            return token;
         }
 
-        return null 
+        return null
     }
-
-
-    //Generar y firmar el token usando la injeccion de Jwt
-    async generateToken(id_usuario, usuario, id_rol): Promise<string> {
-        const payload = {sub: id_usuario, usuario, id_rol};
-        return this.jwtService.signAsync(payload);
-    }
-
 }
