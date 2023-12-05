@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cursos, SearchCursos } from '../interfaces/cursos.interface';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,8 @@ import { Observable } from 'rxjs';
 export class SearchSystemService {
 
   BASE_URL: string = 'http://localhost:4000';
+  router: any;
+  route: any;
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +22,15 @@ export class SearchSystemService {
     });
     
     return this.http.get<Cursos[]> (url, { params })
-    
+    .pipe(
+      tap(() => {
+        this.router.navigate([], {
+          relativeTo: this.route,
+          queryParams: searchCursos,
+          queryParamsHandling: 'merge',
+        });
+      })
+    );  
   }
 }
   
