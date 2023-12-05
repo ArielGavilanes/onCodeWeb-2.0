@@ -6,32 +6,23 @@ import { AuthUsuarioService } from 'src/auth/services/auth-usuario/auth-usuario.
 @Controller('auth')
 export class AuthUsuarioController {
 
-    constructor (
+    constructor(
         private authUsuarioService: AuthUsuarioService
-    ) {}
-    
-    @Post('login')
-    async loginValidation(@Body() authUsuarioDTO: AuthUsuarioDTO): Promise<{token: string}> {
-        
-        //Validar credenciales usando authUsuario de authUsuarioService
-        try {
-            const usuarioValidation = await this.authUsuarioService.authUsuario(authUsuarioDTO);
-            if (usuarioValidation) {
-                const {
-                    id_usuario,
-                    id_rol
-                } = usuarioValidation
-                
-                const token = await this.authUsuarioService.generateToken(id_usuario, authUsuarioDTO.usuario, id_rol)
-            
-                return {token}
-            } else {
-                throw new UnauthorizedException('Credenciales invalidad')
-            }
+    ) { }
 
-        } catch(error) {
-            throw new UnauthorizedException('Error en el proceso de validacion')
-        } 
+    @Post('login')
+    async loginValidation(@Body() authUsuarioDTO: AuthUsuarioDTO): Promise<{ token: string }> {
+        try {
+            const token = await this.authUsuarioService.authUsuario(authUsuarioDTO);
+
+            if (token) {
+                return { token };
+            } else {
+                throw new UnauthorizedException('Credenciales inválidas');
+            }
+        } catch (error) {
+            throw new UnauthorizedException('Error en el proceso de validación');
+        }
     }
 }
 

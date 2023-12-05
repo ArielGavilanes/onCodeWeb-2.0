@@ -12,3 +12,11 @@ export interface LoginUsuario {
     contrasena: string;
     id_rol: number;
 }
+
+export interface UserInfo {
+    id_usuario: number;
+    usuario: string;
+    id_rol: string;
+    id_estado: string;
+
+}
