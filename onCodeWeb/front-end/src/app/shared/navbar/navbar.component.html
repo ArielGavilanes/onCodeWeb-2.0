@@ -1,11 +1,11 @@
 <nav>
     <img src="tu_logo.png" alt="Logo de Mi Sitio Web" class="logo">
     <div class="botones">
-        <a [routerLink]="['/inicio']" routerLinkActive="router-link-active" ><i class="fa fa-home" aria-hidden="true"></i><span>Inicio</span></a>
-        <a [routerLink]="['/search']" routerLinkActive="router-link-active" ><i class="fa fa-search" aria-hidden="true"></i><span>Buscar</span></a>
+        <a [routerLink]="['/dashboard/inicio']" routerLinkActive="router-link-active" ><i class="fa fa-home" aria-hidden="true"></i><span>Inicio</span></a>
+        <a [routerLink]="['/dashboard/search']" routerLinkActive="router-link-active" ><i class="fa fa-search" aria-hidden="true"></i><span>Buscar</span></a>
         <a href="#">Contacto</a>
-    </div>
-    <p>
-        {{userInfo.id_usuario}}
-    </p>
+    </div>  
+    <h1>
+        {{info.usuario}}
+    </h1>
 </nav>
