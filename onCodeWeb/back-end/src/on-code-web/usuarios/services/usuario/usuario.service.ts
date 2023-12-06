@@ -12,9 +12,8 @@ export class UsuarioService {
         private usuarios: typeof Usuarios
     ) { }
 
-    async loginUsuarios(authUsuarioDTO: AuthUsuarioDTO): Promise<LoginUsuario> {
+    async loginUsuarios(authUsuarioDTO: AuthUsuarioDTO): Promise<LoginUsuario | null> {
         const { usuario, contrasena, id_rol } = authUsuarioDTO;
-
 
         const usuarioLogin = await this.usuarios.findOne({
             where: {

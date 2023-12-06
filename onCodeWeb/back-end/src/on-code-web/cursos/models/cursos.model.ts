@@ -5,6 +5,8 @@ import { Contenido } from 'src/on-code-web/contenido/models/contenido.model';
 import { Creadores } from 'src/on-code-web/creadores/models/creadores.model';
 import { Cursos_Estudiantes } from 'src/on-code-web/cursos_estudiantes/models/cursos_estudiantes.model';
 import { DetalleTransacciones } from 'src/on-code-web/detalle-transacciones/models/detalle-transacciones.model';
+import { Estudiantes } from 'src/on-code-web/estudiantes/models/estudiantes.model';
+import { TipoContenido } from 'src/on-code-web/tipo-contenido/models/tipo-contenido.model';
 
 //Table Cursos of onCodeWeb
 @Table({ timestamps: false })
@@ -70,15 +72,14 @@ export class Cursos extends Model {
     Cursos_Categorias: Categorias
 
     //Relationship with Contenido
-    @BelongsToMany(() => Cursos, () => Contenido)
-    Cursos_Contenido: Cursos[]
+    @BelongsToMany(() => TipoContenido, () => Contenido)
+    Cursos_Contenido: TipoContenido[]
 
     //Relationship with DetalleTransacciones
     @HasMany(() => DetalleTransacciones)
     Cursos_DetalleTransacciones: DetalleTransacciones[];
 
     //Relationship with Cursos_Estudiantes
-    @HasMany(() => Cursos_Estudiantes)
-    Estudiantes_Cursos_Estudiantes: Cursos_Estudiantes[]
-
+    @BelongsToMany(() => Estudiantes, () => Cursos_Estudiantes)
+    Cursos_Estudiantes_Belong: Estudiantes[]
 }

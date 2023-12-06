@@ -1,5 +1,6 @@
 import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany, BelongsToMany } from 'sequelize-typescript';
 import { Contenido } from 'src/on-code-web/contenido/models/contenido.model';
+import { Cursos } from 'src/on-code-web/cursos/models/cursos.model';
 
 @Table({ timestamps: false }) 
 export class TipoContenido extends Model {
@@ -17,6 +18,6 @@ export class TipoContenido extends Model {
     nombre: string;
 
     //Relationship with Contenido
-    @BelongsToMany(() => TipoContenido, () => Contenido)
-    TipoContenido_Contenido: TipoContenido[]
+    @BelongsToMany(() => Cursos, () => Contenido)
+    TipoContenido_Contenido: Cursos[]
 }

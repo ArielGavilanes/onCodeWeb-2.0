@@ -1,4 +1,5 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany, BelongsToMany } from 'sequelize-typescript';
+import { Cursos } from 'src/on-code-web/cursos/models/cursos.model';
 import { Cursos_Estudiantes } from 'src/on-code-web/cursos_estudiantes/models/cursos_estudiantes.model';
 import { MetodosPago } from 'src/on-code-web/metodos-pago/models/metodos-pago.model';
 import { Transacciones } from 'src/on-code-web/transacciones/models/transacciones.model';
@@ -83,7 +84,7 @@ export class Estudiantes extends Model {
     Estudiantes_Transacciones: Transacciones[]
 
     //Relationship with Cursos_Estudiantes
-    @HasMany(() => Cursos_Estudiantes)
-    Estudiantes_Cursos_Estudiantes: Cursos_Estudiantes[]
+    @BelongsToMany(() => Cursos, () => Cursos_Estudiantes)
+    Estudiantes_Cursos: Cursos[]
 
 }

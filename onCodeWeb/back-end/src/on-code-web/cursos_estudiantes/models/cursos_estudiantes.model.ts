@@ -34,9 +34,4 @@ export class Cursos_Estudiantes extends Model {
         })
         cedula: string;
 
-    @BelongsTo(() => Estudiantes)
-    Cursos_Estudiantes: Estudiantes
-
-    @BelongsTo(() => Cursos)
-    Estudiantes_Cursos: Cursos
 }

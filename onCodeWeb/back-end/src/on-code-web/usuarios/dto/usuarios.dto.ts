@@ -21,4 +21,3 @@ export class UsuariosDTO {
     @IsNumber()
     id_estado: number;
 }
-

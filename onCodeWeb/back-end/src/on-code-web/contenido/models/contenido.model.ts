@@ -33,4 +33,6 @@ export class Contenido extends Model {
     })
     id_curso: number;
 
+    
+
 }
