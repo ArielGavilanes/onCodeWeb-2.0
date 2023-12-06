@@ -7,122 +7,169 @@
     <form class="row g-3 needs-validation" registerForm="ngForm" (ngSubmit)="insertUsuario()" novalidate>
         <div class="col-md-6">
             <label for="cedula" class="form-label">Cedula</label>
-            <input type="text" class="form-control" id="cedula" value="" name="cedula"  [(ngModel)]="nuevoUsuario.cedula" required>
-            <div class="invalid-feedback">
-                Llena este campo
-            </div>
-            <div class="valid-feedback">
-                Excelente!
+            <div class="input-group has-validation">
+                <input type="text" class="form-control" id="cedula" value="" name="cedula"  [(ngModel)]="nuevoUsuario.cedula" required
+                    #cedula="ngModel"
+                    [class.is-invalid]="cedula.invalid && (cedula.dirty || cedula.touched)"
+                    [class.is-valid]="cedula.valid && (cedula.dirty || cedula.touched)" />
+                <div *ngIf="cedula.invalid && (cedula.dirty || cedula.touched)" class="invalid-feedback">
+                    <p *ngIf="cedula.errors?.['required']">Llena este campo.</p>
+                </div>
+                <div *ngIf="cedula.valid && (cedula.dirty || cedula.touched)" class="valid-feedback">
+                    ¡Excelente!
+                </div>
             </div>
         </div>
+      
         <div class="col-md-6">
             <label for="usuario" class="form-label">Nombre de usuario</label>
             <div class="input-group has-validation">
                 <span class="input-group-text" id="inputGroupPrepend"></span>
                 <input type="text" class="form-control" id="usuario"
-                    name="usuario" [(ngModel)]="nuevoUsuario.usuario" aria-describedby="inputGroupPrepend" required>
-                <div class="invalid-feedback">
-                    Please choose a username.
+                    name="usuario" [(ngModel)]="nuevoUsuario.usuario" aria-describedby="inputGroupPrepend" required
+                    #username="ngModel"
+                    [class.is-invalid]="username.invalid && (username.dirty || username.touched)"
+                    [class.is-valid]="username.valid && (username.dirty || username.touched)" />
+                <div *ngIf="username.invalid && (username.dirty || username.touched)" class="invalid-feedback">
+                    <p *ngIf="username.errors?.['required']">El nombre de usuario es obligatorio.</p>
+                    <p *ngIf="username.errors?.['pattern']">Por favor, ingresa un nombre de usuario válido.</p>
                 </div>
             </div>
         </div>
+
         <div class="col-md-6">
             <label for="primer_nombre" class="form-label">Primer nombre</label>
-            <input type="text" class="form-control" id="primer_nombre" value="" name="primer_nombre" [(ngModel)]="nuevoUsuario.primer_nombre" required>
-            <div class="invalid-feedback">
-                Llena este campo
-            </div>
-            <div class="valid-feedback">
-                Excelente!
+            <div class="input-group has-validation">
+                <input type="text" class="form-control" id="primer_nombre" value="" name="primer_nombre" [(ngModel)]="nuevoUsuario.primer_nombre" required
+                    #primerNombre="ngModel"
+                    [class.is-invalid]="primerNombre.invalid && (primerNombre.dirty || primerNombre.touched)"
+                    [class.is-valid]="primerNombre.valid && (primerNombre.dirty || primerNombre.touched)" />
+                <div *ngIf="primerNombre.invalid && (primerNombre.dirty || primerNombre.touched)" class="invalid-feedback">
+                    <p *ngIf="primerNombre.errors?.['required']">Llena este campo.</p>
+                </div>
+                <div *ngIf="primerNombre.valid && (primerNombre.dirty || primerNombre.touched)" class="valid-feedback">
+                    ¡Excelente!
+                </div>
             </div>
         </div>
+
         <div class="col-md-6">
             <label for="segundo_nombre" class="form-label">Segundo nombre</label>
-            <input type="text" class="form-control" id="segundo_nombre" value="" name="segundo_nombre" [(ngModel)]="nuevoUsuario.segundo_nombre" required>
-            <div class="invalid-feedback">
-                Llena este campo
-            </div>
-            <div class="valid-feedback">
-                Excelente!
+            <div class="input-group has-validation">
+                <input type="text" class="form-control" id="segundo_nombre" value="" name="segundo_nombre" [(ngModel)]="nuevoUsuario.segundo_nombre" required
+                    #segundoNombre="ngModel"
+                    [class.is-invalid]="segundoNombre.invalid && (segundoNombre.dirty || segundoNombre.touched)"
+                    [class.is-valid]="segundoNombre.valid && (segundoNombre.dirty || segundoNombre.touched)" />
+                <div *ngIf="segundoNombre.invalid && (segundoNombre.dirty || segundoNombre.touched)" class="invalid-feedback">
+                    <p *ngIf="segundoNombre.errors?.['required']">Llena este campo.</p>
+                </div>
+                <div *ngIf="segundoNombre.valid && (segundoNombre.dirty || segundoNombre.touched)" class="valid-feedback">
+                    ¡Excelente!
+                </div>
             </div>
         </div>
+        
         <div class="col-md-4">
             <label for="primer_apellido" class="form-label">Primer apellido</label>
-            <input type="text" class="form-control" id="primer_apellidp" value="" name="primer_apellido" [(ngModel)]="nuevoUsuario.primer_apellido"  required>
-            <div class="invalid-feedback">
-                Llena este campo
-            </div>
-            <div class="valid-feedback">
-                Excelente!
+            <div class="input-group has-validation">
+                <input type="text" class="form-control" id="primer_apellido" value="" name="primer_apellido" [(ngModel)]="nuevoUsuario.primer_apellido" required
+                    #primerApellido="ngModel"
+                    [class.is-invalid]="primerApellido.invalid && (primerApellido.dirty || primerApellido.touched)"
+                    [class.is-valid]="primerApellido.valid && (primerApellido.dirty || primerApellido.touched)" />
+                <div *ngIf="primerApellido.invalid && (primerApellido.dirty || primerApellido.touched)" class="invalid-feedback">
+                    <p *ngIf="primerApellido.errors?.['required']">Llena este campo.</p>
+                </div>
+                <div *ngIf="primerApellido.valid && (primerApellido.dirty || primerApellido.touched)" class="valid-feedback">
+                    ¡Excelente!
+                </div>
             </div>
         </div>
+        
         <div class="col-md-4">
             <label for="segundo_apellido" class="form-label">Segundo apellido</label>
-            <input type="text" class="form-control" id="segundo_apellido" value="" name="segundo_apellido" [(ngModel)]="nuevoUsuario.segundo_apellido" required>
-            <div class="invalid-feedback">
-                Llena este campo
-            </div>
-            <div class="valid-feedback">
-                Excelente!
+            <div class="input-group has-validation">
+                <input type="text" class="form-control" id="segundo_apellido" value="" name="segundo_apellido" [(ngModel)]="nuevoUsuario.segundo_apellido" required
+                    #segundoApellido="ngModel"
+                    [class.is-invalid]="segundoApellido.invalid && (segundoApellido.dirty || segundoApellido.touched)"
+                    [class.is-valid]="segundoApellido.valid && (segundoApellido.dirty || segundoApellido.touched)" />
+                <div *ngIf="segundoApellido.invalid && (segundoApellido.dirty || segundoApellido.touched)" class="invalid-feedback">
+                    <p *ngIf="segundoApellido.errors?.['required']">Llena este campo.</p>
+                </div>
+                <div *ngIf="segundoApellido.valid && (segundoApellido.dirty || segundoApellido.touched)" class="valid-feedback">
+                    ¡Excelente!
+                </div>
             </div>
         </div>
-                <!--Escoger rol-->
-                <div class="col-md-4">
-                    <label for="rol" class="form-label">Escoge tu rol</label>
-                    <select class="form-select" id="rol" name="rol" [(ngModel)]="nuevoUsuario.id_rol" required #rol="ngModel" [class.is-invalid]="rol.invalid && (rol.dirty || rol.touched)">
-                        <option value="" disabled>Selecciona un rol</option>
-                        <option *ngFor="let rol of roles" [value]="rol.id_rol">{{rol.descripcion}}</option>
-                    </select>
-                    <div *ngIf="rol.invalid && (rol.dirty || rol.touched)" class="invalid-feedback">
-                        El campo es obligatorio.
-                    </div>
-                    <div *ngIf="nuevoUsuario.id_rol === 1" class="alert alert-danger">
-                        Por favor, selecciona un rol válido.
-                    </div>
+        
+        <div class="col-md-4">
+            <label for="rol" class="form-label">Escoge tu rol</label>
+            <div class="input-group has-validation">
+                <select class="form-select" id="rol" name="rol" [(ngModel)]="nuevoUsuario.id_rol" required #rol="ngModel"
+                    [class.is-invalid]="rol.invalid && (rol.dirty || rol.touched)"
+                    [class.is-valid]="rol.valid && (rol.dirty || rol.touched)">
+                    <option value="" disabled>Selecciona un rol</option>
+                    <option *ngFor="let rol of roles" [value]="rol.id_rol">{{rol.descripcion}}</option>
+                </select>
+                <div *ngIf="rol.invalid && (rol.dirty || rol.touched)" class="invalid-feedback">
+                    <p *ngIf="rol.errors?.['required']">El campo es obligatorio.</p>
                 </div>
-                <!--Deberia de valer-->
-                
+                <div *ngIf="nuevoUsuario.id_rol === 1" class="alert alert-danger">
+                    Por favor, selecciona un rol válido.
+                </div>
+            </div>
+        </div>
         
         <div class="col-md-12">
-            <label for="email" class="form-label">Correo electronico</label>
+            <label for="email" class="form-label">Correo electrónico</label>
             <div class="input-group has-validation">
                 <input type="text" class="form-control" id="email"
-                    aria-describedby="inputGroupPrepend" name="email" [(ngModel)]="nuevoUsuario.email"  required >
-                <div class="invalid-feedback">
-                    Llena este campo
+                    aria-describedby="inputGroupPrepend" name="email" [(ngModel)]="nuevoUsuario.email" required
+                    #email="ngModel"
+                    [class.is-invalid]="email.invalid && (email.dirty || email.touched)"
+                    [class.is-valid]="email.valid && (email.dirty || email.touched)" />
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+                    <p *ngIf="email.errors?.['required']">El correo electrónico es obligatorio.</p>
+                    <p *ngIf="email.errors?.['pattern']">Por favor, ingresa un correo electrónico válido.</p>
                 </div>
-                <div class="valid-feedback">
-                    Grandioso!
+                <div *ngIf="email.valid && (email.dirty || email.touched)" class="valid-feedback">
+                    ¡Correo electrónico válido!
                 </div>
             </div>
         </div>
+
         <div class="col-md-6">
             <label for="contrasena" class="form-label">Contraseña</label>
             <div class="input-group has-validation">
                 <input type="password" class="form-control" id="contrasena"
-                    aria-describedby="inputGroupPrepend" name="contrasena" [(ngModel)]="nuevoUsuario.contrasena" required>
+                    aria-describedby="inputGroupPrepend" name="contrasena" [(ngModel)]="nuevoUsuario.contrasena" required
+                    #password="ngModel" required maxlength="8" 
+                    [class.is-invalid]="password.invalid && (password.dirty || password.touched)"
+                    [class.is-valid]="password.valid && (password.dirty || password.touched)" />
                 <div id="passwordHelpBlock" class="form-text">
-                    Your password must be 8-20 characters long, contain letters and numbers, and must not contain
-                    spaces, special characters, or emoji.
+                    Tu contraseña debe tener entre 4 y 8 caracteres, contener letras y números, y no debe contener espacios, caracteres especiales ni emojis.
                 </div>
-                <div class="invalid-feedback">
-                    Llena este campo
-                </div>
-                <div class="valid-feedback">
-                    Correcto!
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="invalid-feedback">
+                    <p *ngIf="password.errors?.['required']">La contraseña es obligatoria.</p>
+                    <p *ngIf="password.errors?.['pattern']">Por favor, ingresa una contraseña válida.</p>
+                    <p *ngIf="password.errors?.['maxlength']">La contraseña no puede tener más de 8 caracteres.</p>
                 </div>
             </div>
         </div>
+        
         <div class="col-md-6">
             <label for="contrasenaConfirm" class="form-label">Confirmar contraseña</label>
             <div class="input-group has-validation">
                 <input type="password" class="form-control" id="contrasenaConfirm"
-                    aria-describedby="inputGroupPrepend" name="contrasenaConfirm" [(ngModel)]="contrasenaConfirm" required>
-                <div class="invalid-feedback">
-                    Llena este campo
+                    aria-describedby="inputGroupPrepend" name="contrasenaConfirm" [(ngModel)]="contrasenaConfirm" required
+                    #confirmPassword="ngModel" 
+                    [class.is-invalid]="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)"
+                    [class.is-valid]="confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)" />
+                <div *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="invalid-feedback">
+                    <p *ngIf="confirmPassword.errors?.['required']">Debes confirmar la contraseña.</p>
+                    <p *ngIf="confirmPassword.errors?.['mustMatch']">Las contraseñas no coinciden.</p>
                 </div>
-                <div class="valid-feedback">
-                    Todo correcto!
+                <div *ngIf="confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)" class="valid-feedback">
+                    ¡Contraseña correcta!
                 </div>
             </div>
         </div>
