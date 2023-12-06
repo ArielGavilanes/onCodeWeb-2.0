@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { number } from 'mathjs';
 import { Roles } from 'src/app/database/interfaces/roles.interface';
 import { UsuarioCredentials } from 'src/app/database/interfaces/usuarioCredentials.interface';
+import { AuthBackService } from 'src/app/database/services/auth-back.service';
 import { AuthService } from 'src/app/modules/auth/auth.service';
 
 @Component({
@@ -24,7 +26,8 @@ export class LoginFormComponent implements OnInit{
   
   errorMessage = '';
 
-  constructor(private authService: AuthService,
+  constructor(private authBackService: AuthBackService,
+    private authService: AuthService,
     private router: Router
     ) {}
 
@@ -44,22 +47,24 @@ export class LoginFormComponent implements OnInit{
   //   }
   // }
 //validacion de 15 caracteres
-  private isInputValid(): boolean {
-    const {
-      usuario,
-      contrasena
-    } = this.usuarioCredentials;
-    return usuario.length <= 15 && contrasena.length <= 15;
-  }
+  // private isInputValid(): boolean {
+  //   const {
+  //     usuario,
+  //     contrasena
+  //   } = this.usuarioCredentials;
+  //   return usuario.length <= 15 && contrasena.length <= 15;
+  // }
 
 
   //Metodo para la validacion de credenciales en el login
   validationLogin() {
-    this.authService.loginValidation(this.usuarioCredentials).subscribe (
+    this.usuarioCredentials.id_rol = number(this.usuarioCredentials.id_rol)
+    this.authBackService.loginValidation(this.usuarioCredentials).subscribe (
       (res: any) => {
+        console.log(this.usuarioCredentials.id_rol)
         console.log('Token', res.token)
         localStorage.setItem('token', res.token)
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard/inicio']);
       },
     (err: Error) => {
       console.log('Error', err)

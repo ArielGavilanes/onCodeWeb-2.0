@@ -6,9 +6,12 @@ import { CarouselComponent } from './inicio/components/carousel/carousel.compone
 import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
-  { path: 'inicio', component: InicioComponent },
-  { path: 'search', component: SearchComponent }
-
+  { path: 'dashboard', component: WebComponent,
+  children: [
+    { path: 'inicio', component: InicioComponent },
+    { path: 'search', component: SearchComponent },
+  ]
+  }
 ];
 
 

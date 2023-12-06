@@ -22,15 +22,15 @@ export class SearchSystemService {
     });
     
     return this.http.get<Cursos[]> (url, { params })
-    .pipe(
-      tap(() => {
-        this.router.navigate([], {
-          relativeTo: this.route,
-          queryParams: searchCursos,
-          queryParamsHandling: 'merge',
-        });
-      })
-    );  
+    // .pipe(
+    //   tap(() => {
+    //     this.router.navigate([], {
+    //       relativeTo: this.route,
+    //       queryParams: searchCursos,
+    //       queryParamsHandling: 'merge',
+    //     });
+    //   })
+    // );  
   }
 }
   
