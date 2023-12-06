@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import * as jwt from 'jsonwebtoken';
 import { AuthUsuarioDTO } from 'src/auth/dto/authLogin.dto';
-import { UsuarioCredentials } from 'src/auth/interfaces/usuarioCredentials.interface';
 import { UsuarioService } from 'src/on-code-web/usuarios/services/usuario/usuario.service';
 
 @Injectable()
@@ -14,15 +14,17 @@ export class AuthUsuarioService {
 
     //Utilizar el servicio Usuario para comprobar las credenciales del usuario
     async authUsuario(authUsuarioDTO: AuthUsuarioDTO): Promise<string | null> {
-        const usuario = await this.usuariosService.loginUsuarios(authUsuarioDTO)
+        const usuarioVal = await this.usuariosService.loginUsuarios(authUsuarioDTO)
 
-        if (usuario) {
+        if (usuarioVal) {  
             const {
                 id_usuario,
-                id_rol
-            } = usuario
+                id_rol,
+                usuario,
+                contrasena
+            } = usuarioVal
 
-            const payload = { sub: id_usuario, usuario: authUsuarioDTO.usuario, id_rol };
+            const payload = { sub: id_usuario, usuario: usuario, id_rol, contrasena };
 
             const token = await this.jwtService.signAsync(payload);
 
