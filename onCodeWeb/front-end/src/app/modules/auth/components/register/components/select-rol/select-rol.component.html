@@ -4,7 +4,7 @@
         <h1>Bienvenido a onCodeWeb!</h1>
         <p>Vamos a registrarnos</p>
     </div>
-    <form class="row g-3 needs-validation" registerForm="ngForm" (ngSubmit)="insertUsuario()">
+    <form class="row g-3 needs-validation" registerForm="ngForm" (ngSubmit)="insertUsuario()" novalidate>
         <div class="col-md-6">
             <label for="cedula" class="form-label">Cedula</label>
             <input type="text" class="form-control" id="cedula" value="" name="cedula"  [(ngModel)]="nuevoUsuario.cedula" required>
@@ -66,12 +66,23 @@
                 Excelente!
             </div>
         </div>
-        <div class="col-md-4">
-            <label for="rol" class="form-label">Escoge tu rol</label>
-            <select class="form-select" id="rol" name="rol" [(ngModel)]="nuevoUsuario.id_rol" required>
-                <option *ngFor="let rol of roles" [value]="rol.id_rol">{{rol.descripcion}}</option>
-            </select>
-        </div>
+                <!--Escoger rol-->
+                <div class="col-md-4">
+                    <label for="rol" class="form-label">Escoge tu rol</label>
+                    <select class="form-select" id="rol" name="rol" [(ngModel)]="nuevoUsuario.id_rol" required #rol="ngModel" [class.is-invalid]="rol.invalid && (rol.dirty || rol.touched)">
+                        <option value="" disabled>Selecciona un rol</option>
+                        <option *ngFor="let rol of roles" [value]="rol.id_rol">{{rol.descripcion}}</option>
+                    </select>
+                    <div *ngIf="rol.invalid && (rol.dirty || rol.touched)" class="invalid-feedback">
+                        El campo es obligatorio.
+                    </div>
+                    <div *ngIf="nuevoUsuario.id_rol === 1" class="alert alert-danger">
+                        Por favor, selecciona un rol válido.
+                    </div>
+                </div>
+                <!--Deberia de valer-->
+                
+        
         <div class="col-md-12">
             <label for="email" class="form-label">Correo electronico</label>
             <div class="input-group has-validation">
