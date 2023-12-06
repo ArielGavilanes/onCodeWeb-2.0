@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserInfoService } from 'src/app/database/services/useri-info.service';
+import { UserInfoService } from 'src/app/database/services/user-info.service';
 
 @Component({
   selector: 'shared-navbar',
@@ -8,24 +8,25 @@ import { UserInfoService } from 'src/app/database/services/useri-info.service';
 })
 export class NavbarComponent implements OnInit {
 
+  info: any;
 
-  ngOnInit(): void {
-    this.getUserInfo()
+
+  ngOnInit(): void {  
+    this.getInfo()
   }
-  userInfo: any;
   constructor (
-    private userInfoService: UserInfoService
-  ) {}
 
-  getUserInfo() {
-    this.userInfoService.getUserInfo().subscribe(
-      (data) => {
-        console.log(data)
-        this.userInfo = data.usuario
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
+    private userInfoService: UserInfoService
+    ) {}
+
+    getInfo() {
+      this.userInfoService.getInfo().subscribe(
+        (res) => 
+        {
+          console.log(res)
+          this.info = res
+        },
+        (err) => console.log(err),
+      )
+    }
   }
-}
