@@ -1,4 +1,4 @@
-import { Table, Column, Model, DataType, HasMany, ForeignKey } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, HasMany, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { Cursos } from 'src/on-code-web/cursos/models/cursos.model';
 import { TipoContenido } from 'src/on-code-web/tipo-contenido/models/tipo-contenido.model';
 
@@ -33,6 +33,11 @@ export class Contenido extends Model {
     })
     id_curso: number;
 
+    @BelongsTo(() => Cursos)
+    contenido_Cursos: Cursos
+
+    @BelongsTo(() => TipoContenido)
+    TipoContenido_Contenido: TipoContenido
     
 
 }

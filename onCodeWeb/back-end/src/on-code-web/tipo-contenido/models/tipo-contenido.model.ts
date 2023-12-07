@@ -18,6 +18,6 @@ export class TipoContenido extends Model {
     nombre: string;
 
     //Relationship with Contenido
-    @BelongsToMany(() => Cursos, () => Contenido)
-    TipoContenido_Contenido: Cursos[]
+    @HasMany(() => Contenido)
+    TipoContenido_Contenido: Contenido[];
 }
