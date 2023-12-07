@@ -23,12 +23,12 @@ export class UserProfileService {
         let usuarioInfo
         if (id_rol == 1) {
             usuarioInfo = await this.creadoresModel.findOne({ 
-                where: { id_usuario }
+                where: { id_usuario: id_usuario }
             })
         }
         if (id_rol == 2) {
             usuarioInfo = await this.estudiantesModel.findOne({ 
-                where: { id_usuario }
+                where: { id_usuario: id_usuario }
             })
         }
         return {usuario, usuarioInfo}
