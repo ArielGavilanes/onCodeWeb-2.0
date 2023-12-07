@@ -2,12 +2,13 @@
         <h1>Contenido del curso</h1>
     </div>
 <div *ngFor="let contenido of contenidos">
-    <div class="content-img" >
-        <img [src]="contenidos.descripcion" alt="">
+    <div class="content-img" *ngIf="contenidos.id_tipo_contenido === 1">
+        <img [src]="contenidos.descripcion" alt="" *ngIf="contenidos.id_tipo_contenido === 2">
     </div>
     <div class="content-video" >
-        <iframe width="100%" height="100%" [src]="contenidos.descripcion" allowfullscreen></iframe>    </div>
-    <div class="content-text">
+        <iframe width="100%" height="100%" [src]="contenidos.descripcion" allowfullscreen></iframe>    
+    </div>
+    <div class="content-text" *ngIf="contenidos.id_tipo_contenido === 3">
         <p>{{contenidos.descripcion}}</p>
     </div> 
 </div>
