@@ -11,7 +11,6 @@ export class UserProfileController {
     @UseGuards(JwtAuthGuard)
     @Get('profile')
     async getProfile(@Request() req) {
-        // Usa el ID del usuario y el ID del rol para buscar su perfil en la base de datos
         return await this.userProfileService.findUserInfoById(req.user.sub, req.user.id_rol);
 
     }

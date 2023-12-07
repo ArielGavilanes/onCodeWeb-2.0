@@ -21,12 +21,12 @@ export class UserProfileService {
     async findUserInfoById(id_usuario: number, id_rol: number): Promise<any> {
         const usuario = await this.usuariosModel.findByPk(id_usuario)
         let usuarioInfo
-        if (id_rol === 1) {
+        if (id_rol == 1) {
             usuarioInfo = await this.creadoresModel.findOne({ 
                 where: { id_usuario }
             })
         }
-        if (id_rol === 2) {
+        if (id_rol == 2) {
             usuarioInfo = await this.estudiantesModel.findOne({ 
                 where: { id_usuario }
             })
