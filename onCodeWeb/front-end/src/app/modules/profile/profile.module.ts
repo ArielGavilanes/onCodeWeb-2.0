@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileComponent } from './profile/profile.component';
-import { ImgProfileComponent } from './components/img-profile/img-profile.component';
-import { ContentProfileComponent } from './components/content-profile/content-profile.component';
 
+import { ProfileRoutingModule } from './profile-routing.module';
+import { ProfileComponent } from './profile/profile.component';
+import { ProfileImgComponent } from './components/profile-img/profile-img.component';
+import { ProfileContentComponent } from './components/profile-content/profile-content.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    ImgProfileComponent,
-    ContentProfileComponent
+    ProfileImgComponent,
+    ProfileContentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ProfileRoutingModule
   ]
 })
 export class ProfileModule { }
