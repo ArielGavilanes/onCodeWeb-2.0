@@ -1,0 +1,49 @@
+.content-img {
+    border-radius: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: hidden;
+    border-radius: 15px;
+    width: 98%;
+    height: 400px;
+    margin-top: 10px;
+}
+
+.content-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.content-video {
+    border-radius: 15px;
+    width: 98%;
+    height: 315px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+}
+
+iframe {
+    border-radius: 15px;
+}
+
+.title {
+    padding: 15px;
+}
+
+.content-text p {
+    font-size: 20px;
+    align-items: center;
+}
+
+.content-text {
+    width: 98%;
+    height: 120px;
+    padding: 15px;
+    background-color: rgb(231, 231, 231);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    border-radius: 15px;
+}
