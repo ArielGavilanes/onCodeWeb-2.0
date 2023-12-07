@@ -1,1 +1,8 @@
-<p>curso-header works!</p>
+<div class="curso-banner">
+    <img [src]="banner?.url_foto_portada" alt="">
+    <!-- <h1>Hola mundo!</h1> -->
+</div>
+<div class="descripcion">
+    <h1>{{ banner?.nombre.charAt(0).toUpperCase() + banner?.nombre.slice(1)  }}</h1>
+    <p>{{banner?.descripcion}}</p>
+</div>
