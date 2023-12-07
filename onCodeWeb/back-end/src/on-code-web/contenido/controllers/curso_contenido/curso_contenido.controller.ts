@@ -10,6 +10,6 @@ export class CursoContenidoController {
 
     @Get(':id_curso')
     async getCursoContenido(@Param('id_curso') id_curso): Promise<any> {
-        this.cursoContenidoService.getCursoContenido(id_curso)
+        return this.cursoContenidoService.getCursoContenido(id_curso)
     }
 }

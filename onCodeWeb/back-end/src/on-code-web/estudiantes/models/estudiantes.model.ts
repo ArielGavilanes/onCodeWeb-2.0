@@ -84,7 +84,7 @@ export class Estudiantes extends Model {
     Estudiantes_Transacciones: Transacciones[]
 
     //Relationship with Cursos_Estudiantes
-    @BelongsToMany(() => Cursos, () => Cursos_Estudiantes)
-    Estudiantes_Cursos: Cursos[]
+    @HasMany(() => Cursos_Estudiantes)
+    Estudiantes_Cursos_Estudiantes: Cursos_Estudiantes[]
 
 }

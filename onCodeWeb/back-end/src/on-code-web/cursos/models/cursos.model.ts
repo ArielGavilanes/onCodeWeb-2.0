@@ -71,15 +71,16 @@ export class Cursos extends Model {
     @BelongsTo(() => Categorias)
     Cursos_Categorias: Categorias
 
-    //Relationship with Contenido
-    @BelongsToMany(() => TipoContenido, () => Contenido)
-    Cursos_Contenido: TipoContenido[]
 
     //Relationship with DetalleTransacciones
     @HasMany(() => DetalleTransacciones)
     Cursos_DetalleTransacciones: DetalleTransacciones[];
 
+    //Relationship with Contenido
+    @HasMany(() => Contenido)
+    Cursos_Contenido: Contenido[];
+
     //Relationship with Cursos_Estudiantes
-    @BelongsToMany(() => Estudiantes, () => Cursos_Estudiantes)
-    Cursos_Estudiantes_Belong: Estudiantes[]
+    @HasMany(() => Cursos_Estudiantes)
+    Cursos_Cursos_Estudiantes: Cursos_Estudiantes[];
 }

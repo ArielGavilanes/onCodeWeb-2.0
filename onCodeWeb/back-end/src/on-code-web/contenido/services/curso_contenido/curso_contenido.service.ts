@@ -17,12 +17,18 @@ export class CursoContenidoService {
     ) {}
 
     async getCursoContenido(id_curso: number): Promise<any> {
-        return await this.contenidoModel.findAll({
+        // Buscar el curso
+        const curso = await this.cursosModel.findByPk(id_curso);
+    
+        // Buscar los contenidos asociados al curso
+        const contenidos = await this.contenidoModel.findAll({
             where: {
-                id_curso
-            },
-            include: [this.cursosModel, this.tipoContenidoModel]
-        })
+                id_curso: id_curso
+            }
+        });
+    
+        // Devolver el curso y los contenidos
+        return { curso, contenidos };
     }
 
 }
