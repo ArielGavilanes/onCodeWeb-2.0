@@ -1,0 +1,23 @@
+.sidebar {
+    height: 10%;
+    padding: 10px;
+    background-color: rgb(237, 237, 237);
+}
+
+.btn {
+    background-color: rgb(237, 237, 237);
+    border-color: rgb(237, 237, 237);
+    color: #000;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 0;
+    padding-left: 10px;
+}
+
+.offcanvas {
+    background-color: rgb(201, 201, 201);
+}
+
+.btn-close {
+}
+
