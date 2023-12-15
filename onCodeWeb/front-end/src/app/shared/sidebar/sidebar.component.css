@@ -18,6 +18,68 @@
     background-color: rgb(201, 201, 201);
 }
 
-.btn-close {
-}
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .course {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .course img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .course-info {
+    padding: 20px;
+  }
+  
+  .course-info h2 {
+    color: #333;
+  }
+  
+  .course-info p {
+    margin-bottom: 10px;
+  }
+  
+  .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50;
+  }
+  
+  .buy-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .buy-button:hover {
+    background-color: #45a049;
+  }
 
+  
+  

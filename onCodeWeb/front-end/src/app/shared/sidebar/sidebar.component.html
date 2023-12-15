@@ -1,13 +1,22 @@
 <div class="sidebar">
     <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions"
         aria-controls="offcanvasWithBothOptions"><i class="fa-solid fa-list"></i></button>
-</div>  
+</div>
+
 <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions"
-        aria-labelledby="offcanvasWithBothOptionsLabel" data-bs-theme="dark">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-        </div>
+    aria-labelledby="offcanvasWithBothOptionsLabel" data-bs-theme="dark">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menú</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
+    <div class="offcanvas-body">
+        <div class="user-section mb-3">
+            <p class="fw-bold">Usuario: <span id="username">Nombre de Usuario</span></p>
+        </div>
+        <button class="btn btn-primary d-block mb-2" onclick="irAPerfil()">Perfil</button>
+        <button class="btn btn-success d-block mb-2" onclick="irACategoria()">Categoría</button>
+        <button class="btn btn-info d-block mb-2" onclick="irACursos()">Cursos</button>
+        <button class="btn btn-warning d-block mb-2" onclick="irAConfiguraciones()">Configuraciones</button>
+        <button class="btn btn-danger d-block" onclick="cerrarSesion()">Cerrar Sesión</button>
+    </div>
+</div>

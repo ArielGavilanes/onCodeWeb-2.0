@@ -1,1 +1,36 @@
-<p>profile-img works!</p>
+<div class="profile-img">
+    <img class="img-portada" [src]="infoUsuario.url_foto_portada" alt="">
+    <img class="img-perfil" [src]="infoUsuario.url_foto_perfil" alt="">
+    <div class="profile-info">
+        <h1>&#64;{{usuario.usuario}}</h1>
+        <div *ngIf="usuario.id_rol === 1">
+            <h2>Estudiante</h2>
+        </div>
+        <div *ngIf="usuario.id_rol === 2">
+            <h2>Creador</h2>
+        </div>
+    </div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#editarInfo">
+        Editar informacion
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="editarInfo" tabindex="-1" aria-labelledby="editarInfoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="editarInfoLabel">Editar informacion</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

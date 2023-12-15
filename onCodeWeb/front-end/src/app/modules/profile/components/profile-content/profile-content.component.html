@@ -1,1 +1,49 @@
-<p>profile-content works!</p>
+<div class="profile-content">
+    <div *ngIf="usuario.id_rol === 1">
+        <h1>Tus cursos</h1>
+    </div>
+    <div *ngIf="usuario.id_rol === 2">
+        <h1>Cursos que creaste</h1>
+    </div>
+    <div *ngIf="cursos.length > 0; else sinResults">
+        <div *ngFor="let curso of cursos">
+            <div class="card" style="width: 18rem;">
+                <img src="{{curso.url_foto_portada}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <a [routerLink]="['/cursos', curso.id_curso]">
+                        <h5 class="card-title">{{ curso.nombre.charAt(0).toUpperCase() + curso.nombre.slice(1)}}</h5>
+                    </a>
+                    <p class="card-text">{{curso.descripcion}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #sinResults>
+        <h2>Sin resultados</h2>
+    </ng-template>
+    <div *ngIf="usuario.id_rol === 1">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearCurso">
+            Crear curso
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="crearCurso" tabindex="-1" aria-labelledby="crearCursoLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="crearCursoLabel">Crear curso</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

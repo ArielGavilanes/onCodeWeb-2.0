@@ -23,17 +23,4 @@ export class CursosService {
   getCursoContent(id_curso: number) {
     return this.cursosContentService.getCursoContent(id_curso);
   }
-
-  comprarCurso(transaction: Transaction): Observable<any> {
-    return this.transactionService.comprarCurso(transaction)
-  }
-
-  getTipoContenido(): Observable<TipoContenido[]> {
-    return this.tipoContenidoService.getTipoContenido()
-  }
-
-  crearContenido(contenido: Contenido): Observable<any> {
-    // console.log('error en curso service', contenido)
-    return this.contenidoService.crearContenido(contenido)
-  }
 }
