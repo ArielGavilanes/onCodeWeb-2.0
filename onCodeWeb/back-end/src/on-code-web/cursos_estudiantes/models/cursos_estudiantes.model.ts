@@ -12,7 +12,7 @@ export class Cursos_Estudiantes extends Model {
         primaryKey: true,
         autoIncrement: true
         })
-        id_cursos_estudiantes: number;
+        id_cursos_estudiantes?: number;
     
     @Column({
         type: DataType.BOOLEAN,

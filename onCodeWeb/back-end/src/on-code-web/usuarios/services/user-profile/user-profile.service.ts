@@ -16,21 +16,37 @@ export class UserProfileService {
         private creadoresModel: typeof Creadores,
         @InjectModel(Estudiantes)
         private estudiantesModel: typeof Estudiantes,
+        @InjectModel(Cursos_Estudiantes)
+        private cursos_estudiantesModel: typeof Cursos_Estudiantes,
+        @InjectModel(Cursos)
+        private cursosModel: typeof Cursos
         ) {}
 
     async findUserInfoById(id_usuario: number, id_rol: number): Promise<any> {
+        // console.log('params', id_usuario, id_rol)
         const usuario = await this.usuariosModel.findByPk(id_usuario)
         let usuarioInfo
-        if (id_rol === 1) {
-            usuarioInfo = await this.creadoresModel.findOne({ 
-                where: { id_usuario: id_usuario }
-            })
-        }
-        if (id_rol === 2) {
+        if (id_rol == 1) {
             usuarioInfo = await this.estudiantesModel.findOne({ 
-                where: { id_usuario: id_usuario }
+                where: { id_usuario: id_usuario },
+                include: [
+                    {
+                        model: this.cursos_estudiantesModel,
+                        where: {
+                            estado: true
+                        },
+                        separate: true
+                    }
+                ]
             })
         }
+        if (id_rol == 2) {
+            usuarioInfo = await this.creadoresModel.findOne({ 
+                where: { id_usuario: id_usuario },
+                include: [this.cursosModel]
+            })
+        }
+        // console.log('Traido desde backend info', usuario, usuarioInfo)
         return {usuario, usuarioInfo}
     }
 }

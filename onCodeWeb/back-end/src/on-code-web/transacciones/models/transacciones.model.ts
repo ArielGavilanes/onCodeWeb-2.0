@@ -13,7 +13,7 @@ export class Transacciones extends Model {
     autoIncrement: true,
     primaryKey: true,
     })
-    id_transaccion: number;
+    id_transaccion?: number;
 
     @Column({
     type: DataType.BOOLEAN,
