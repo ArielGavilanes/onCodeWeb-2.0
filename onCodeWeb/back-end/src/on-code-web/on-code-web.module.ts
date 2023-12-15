@@ -28,6 +28,7 @@ import { InsertUsuarioModule } from './functions/insert-usuario/insert-usuario.m
 import { SearchSystemModule } from './functions/search-system/search-system.module';
 import { CursosEstudiantesModule } from './cursos_estudiantes/cursos_estudiantes.module';
 import { Cursos_Estudiantes } from './cursos_estudiantes/models/cursos_estudiantes.model';
+import { TransactionModule } from './functions/transaction/transaction.module';
 
 const models = [
     Roles,
@@ -73,7 +74,8 @@ const models = [
         TransaccionesModule,
         InsertUsuarioModule,
         SearchSystemModule,
-        CursosEstudiantesModule
+        CursosEstudiantesModule,
+        TransactionModule
     ]
 })
 export class OnCodeWebModule { }

@@ -12,14 +12,14 @@ export class DetalleTransacciones extends Model {
     autoIncrement: true,
     primaryKey: true,
     })
-    id_detalle_transaccion: number;
+    id_detalle_transaccion?: number;
 
     @Column({
     type: DataType.DATE,
     allowNull: false,
     defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     })
-    fecha_hora: Date;
+    fecha_hora?: Date;
 
     @ForeignKey(() => Cursos)
     @Column({

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { InsertUsuario } from 'src/app/database/interfaces/insertUsuario.interface';
 import { Roles } from 'src/app/database/interfaces/roles.interface';
 import { AuthService } from 'src/app/modules/auth/auth.service';
@@ -14,7 +15,10 @@ export class SelectRolComponent implements OnInit {
     // Variable local para almacenar los roles en el componente
     roles: Roles[] = [];
 
-    constructor(private authService: AuthService) { }
+    constructor(
+      private authService: AuthService,
+      private router: Router
+      ) { }
   
     ngOnInit() {
       this.getRoles();
@@ -51,13 +55,21 @@ export class SelectRolComponent implements OnInit {
     contrasenaConfirm:string = ''
 
     insertUsuario() {
+    if (this.nuevoUsuario.contrasena === this.contrasenaConfirm){ 
       this.nuevoUsuario.id_rol = Number(this.nuevoUsuario.id_rol);
       this.authService.insertUsuario(this.nuevoUsuario)
       .subscribe(
-        res => console.log('Usuario creado correctamente', res),
-        error => console.log(error)
+        (res) => {
+          this.router.navigate(['/login']);
+
+        },
+        (error: Error) => {
+          console.log("Error en register", error)
+        }
       )
       console.log(this.nuevoUsuario)
+    } else {
+      console.log('Las contraseñas no coinciden')
     }
-    
   }
+}

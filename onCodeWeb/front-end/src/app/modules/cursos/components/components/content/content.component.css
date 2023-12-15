@@ -24,10 +24,6 @@
     margin-top: 10px;
 }
 
-iframe {
-    border-radius: 15px;
-}
-
 .title {
     padding: 15px;
 }
@@ -46,4 +42,24 @@ iframe {
     margin-right: auto;
     margin-top: 10px;
     border-radius: 15px;
+}
+
+.btn-buy {
+    width: 98%;
+    padding: 15px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    display: block;
+    /* background-color: rgb(231, 231, 231);
+    border-color:  rgb(231, 231, 231);
+    color: black; */
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.edit-content {
+    padding: 10px;
 }

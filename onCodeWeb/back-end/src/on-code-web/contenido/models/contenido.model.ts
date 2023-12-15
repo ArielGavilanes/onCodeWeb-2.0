@@ -11,7 +11,7 @@ export class Contenido extends Model {
     autoIncrement: true,
     primaryKey: true,
     })
-    id_contenido: number;
+    id_contenido?: number;
 
     @Column({
     type: DataType.STRING(300),

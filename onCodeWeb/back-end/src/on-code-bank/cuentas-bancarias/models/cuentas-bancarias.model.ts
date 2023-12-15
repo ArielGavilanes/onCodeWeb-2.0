@@ -1,4 +1,3 @@
-import { column } from 'mathjs';
 import { Table, Column, Model, DataType, HasMany, ForeignKey, AllowNull, BelongsTo } from 'sequelize-typescript';
 import { Clientes } from 'src/on-code-bank/clientes/models/clientes.model';
 import { Tarjetas } from 'src/on-code-bank/tarjetas/models/tarjetas.model';

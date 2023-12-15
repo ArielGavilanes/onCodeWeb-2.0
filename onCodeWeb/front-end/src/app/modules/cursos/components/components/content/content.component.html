@@ -1,13 +1,132 @@
-    <div class="title">
-        <h1>Contenido del curso</h1>
+<div *ngIf="usuario?.id_rol === 1">
+    <div *ngIf="banner?.premium === false">
+        <div class="title">
+            <h1>Contenido del curso</h1>
+        </div>
+        <div *ngFor="let contenido of contenidos">
+            <div class="content-img" *ngIf="contenido.id_tipo_contenido === 1">
+                <img [src]="contenido.contenido" alt="">
+            </div>
+            <div class="content-video" *ngIf="contenido.id_tipo_contenido === 2">
+                <video [src]="contenido.contenido"></video>
+            </div>
+            <div class="content-text" *ngIf="contenido.id_tipo_contenido === 3">
+                <p>{{contenido.contenido}}</p>
+            </div>
+        </div>
     </div>
-<div *ngFor="let contenido of contenidos">
-    <div class="content-img" *ngIf="contenido.id_tipo_contenido === 1">
-        <img [src]="contenido.contenido" alt="">
+    <div *ngIf="banner?.premium === true">
+        <div *ngIf="cursos && tieneCurso(id_curso); else noPropiedad">
+            <div class="title">
+                <h1>Contenido del curso</h1>
+            </div>
+            <div *ngFor="let contenido of contenidos">
+                <div class="content-img" *ngIf="contenido.id_tipo_contenido === 1">
+                    <img [src]="contenido.contenido" alt="">
+                </div>
+                <div class="content-video" *ngIf="contenido.id_tipo_contenido === 2">
+                    <video [src]="contenido.contenido"></video>
+                </div>
+                <div class="content-text" *ngIf="contenido.id_tipo_contenido === 3">
+                    <p>{{contenido.contenido}}</p>
+                </div>
+            </div>
+        </div>
+        <ng-template #noPropiedad>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-buy btn-dark" data-bs-toggle="modal" data-bs-target="#buyConfirm">
+                Comprar curso por {{banner?.precio}}
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="buyConfirm" tabindex="-1" aria-labelledby="buyConfirmLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div *ngIf="infoUsuario.id_metodo_pago != null">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar compra</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <h3>Estas seguro de comprar este curso?</h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-dark" (click)="comprarCurso()">Confirmar
+                                    compra</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="infoUsuario.id_metodo_pago === null">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir metodo de pago</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <h3>Deberias primero añadir un metodo de pago</h3>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-dark" (click)="comprarCurso()">Confirmar
+                                    compra</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
     </div>
-    <div class="content-video" *ngIf="contenido.id_tipo_contenido === 2">
-        <iframe width="835" height="418" src="https://www.youtube.com/embed/{{contenido.contenido}}" title="¿Sabes qué es PYTHON y por qué es un lenguaje de programación tan importante?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>    </div>
-    <div class="content-text" *ngIf="contenido.id_tipo_contenido === 3">
-        <p>{{contenido.contenido}}</p>
-    </div> 
+</div>
+<div *ngIf="usuario?.id_rol === 2">
+    <div *ngIf="banner?.cedula === infoUsuario.cedula">
+        <div class="title">
+            <h1>Contenido del curso</h1>
+        </div>
+        <div *ngFor="let contenido of contenidos">
+            <div class="content-img" *ngIf="contenido.id_tipo_contenido === 1">
+                <img [src]="contenido.contenido" alt="">
+            </div>
+            <div class="content-video" *ngIf="contenido.id_tipo_contenido === 2">
+                <video [src]="contenido.contenido"></video>
+            </div>
+            <div class="content-text" *ngIf="contenido.id_tipo_contenido === 3">
+                <p>{{contenido.contenido}}</p>
+            </div>
+        </div>
+        <div class="edit-content">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-dark btn-content" data-bs-toggle="modal" data-bs-target="#editCurso">
+                Añadir contenido
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="editCurso" tabindex="-1" aria-labelledby="editCursoLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="editCursoLabel">Añadir Contenido</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <select class="form-select" aria-label="" [(ngModel)]="datosForContenido.id_tipo_contenido" name="id_tipo_contenido">
+                                    <option *ngFor="let tipoContenido of tiposContenido" [value]="tipoContenido.id_tipo_contenido">{{tipoContenido.nombre}}</option>
+                                </select>
+                                <p></p>
+                                <div class="mb-3">
+                                    <label for="contenido-value" class="form-label">Contenido</label>
+                                    <input type="text" class="form-control" id="contenido-value" name="contenido-value" placeholder="URL o texto del contenido" [(ngModel)]="datosForContenido.contenido"> 
+                                </div>
+                                <button type="submit" class="btn btn-dark" (click)="createContenido()">Guardar cambios</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

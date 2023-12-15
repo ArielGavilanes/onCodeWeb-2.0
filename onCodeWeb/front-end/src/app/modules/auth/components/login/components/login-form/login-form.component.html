@@ -33,7 +33,6 @@
                     <select class="form-select" id="rol" name="rol" [(ngModel)]="usuarioCredentials.id_rol" required #rol="ngModel"
                         [class.is-invalid]="rol.invalid && (rol.dirty || rol.touched)"
                         [class.is-valid]="rol.valid && (rol.dirty || rol.touched)">
-                        <option value="" disabled>Selecciona un rol</option>
                         <option *ngFor="let rol of roles" [value]="rol.id_rol">{{rol.descripcion}}</option>
                     </select>
                     <div *ngIf="rol.invalid && (rol.dirty || rol.touched)" class="invalid-feedback">
@@ -47,4 +46,6 @@
             </form>
         </div>
     </div>
+    <p></p>
+    <p>No tienes una cuenta? <a routerLink="/register">Registrarse</a></p>
 </div>
