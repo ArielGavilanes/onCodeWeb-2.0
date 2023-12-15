@@ -23,7 +23,8 @@ import { BackgroundRowComponent as loginBackground } from './components/login/co
   imports: [
     CommonModule,
     FormsModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+
   ]
 })
 export class AuthModule { }

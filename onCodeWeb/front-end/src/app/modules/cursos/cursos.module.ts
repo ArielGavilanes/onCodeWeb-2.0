@@ -7,19 +7,21 @@ import { ContentComponent } from './components/components/content/content.compon
 import { CursosComponent } from './cursos/cursos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { CursoEspecificoComponent } from './components/curso-especifico/curso-especifico.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     CursoHeaderComponent,
     ContentComponent,
     CursosComponent,
-    CursoEspecificoComponent
+    CursoEspecificoComponent,
+    
   ],
   imports: [
     CommonModule,
     CursosRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class CursosModule { }
