@@ -1,18 +1,18 @@
 <div class="profile-img">
-    <img class="img-portada" [src]="infoUsuario.url_foto_portada" alt="">
-    <img class="img-perfil" [src]="infoUsuario.url_foto_perfil" alt="">
+    <img class="img-portada" [src]="infoUsuario?.url_foto_portada" alt="">
+    <img class="img-perfil" [src]="infoUsuario?.url_foto_perfil" alt="">
     <div class="profile-info">
-        <h1>&#64;{{usuario.usuario}}</h1>
-        <div *ngIf="usuario.id_rol === 1">
+        <h1>&#64;{{usuario?.usuario}}</h1>
+        <div *ngIf="usuario?.id_rol === 1">
             <h2>Estudiante</h2>
         </div>
-        <div *ngIf="usuario.id_rol === 2">
+        <div *ngIf="usuario?.id_rol === 2">
             <h2>Creador</h2>
         </div>
     </div>
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#editarInfo">
-        Editar informacion
+    <button type="button" class="btn btn-dark btn-edit" data-bs-toggle="modal" data-bs-target="#editarInfo">
+        Editar fotos
     </button>
 
     <!-- Modal -->
@@ -20,15 +20,40 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editarInfoLabel">Editar informacion</h1>
+                    <h1 class="modal-title fs-5" id="editarInfoLabel">Editar fotos</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
-
+                    <div *ngIf="usuario?.id_rol === 1">
+                        <form (submit)="updateFotoEstudiante()">
+                            <div class="mb-3">
+                                <label for="url_foto_perfil" class="form-label">Foto de perfil</label>
+                                <input type="text" class="form-control" id="url_foto_perfil" name="url_foto_perfil" [(ngModel)]="updateFoto.url_foto_perfilDTO" [value]="infoUsuario?.url_foto_perfil" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="url_foto_portada" class="form-label">Foto de portada</label>
+                                <input type="text" class="form-control" id="url_foto_portada" name="url_foto_portada" [(ngModel)]="updateFoto.url_foto_portadaDTO" [value]="infoUsuario?.url_foto_portada" required>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Guardar cambios</button>
+                        </form>
+                    </div>
+                    <div *ngIf="usuario?.id_rol === 2">
+                        <form (submit)="updateFotoCreador()">
+                            <div class="mb-3">
+                                <label for="url_foto_perfil" class="form-label">Foto de perfil</label>
+                                <input type="text" class="form-control" id="url_foto_perfil" name="url_foto_perfil" [(ngModel)]="updateFoto.url_foto_perfilDTO"  [defaultValue]="infoUsuario?.url_foto_perfil" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="url_foto_portada" class="form-label">Foto de portada</label>
+                                <input type="text" class="form-control" id="url_foto_portada" name="url_foto_portada" 
+                                [(ngModel)]="updateFoto.url_foto_portadaDTO" required>                            
+                            </div>
+                            <button type="submit" class="btn btn-dark">Guardar cambios</button>
+                        </form>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

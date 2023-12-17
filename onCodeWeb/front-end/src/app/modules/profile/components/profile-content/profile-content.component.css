@@ -1,3 +1,17 @@
+.profile-content {
+    width: 98.5%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 1%;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* align-items: center; */
+    background-color:  rgb(237, 237, 237);
+}
+
 .card {
     width: 100%;
     display: inline-block;
@@ -22,16 +36,22 @@
     object-fit: cover;
 }
 
-.profile-content {
+.btn-create {
     width: 98%;
-    margin-right: auto;
+    padding: 15px;
+    text-align: center;
     margin-left: auto;
-    margin-top: 13%;
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    /* align-items: center; */
-    background-color:  rgb(237, 237, 237);
+    margin-right: auto;
+    margin-top: 10px;
+    display: block;
+    /* background-color: rgb(231, 231, 231);
+    border-color:  rgb(231, 231, 231);
+    color: black; */
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.title {
+    padding: 15px;
 }

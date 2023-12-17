@@ -45,13 +45,13 @@ export class Creadores extends Model {
     email: string;
 
     @Column({
-    type: DataType.STRING(255),
+    type: DataType.STRING(300),
     allowNull: false
     })
     url_foto_perfil: string;
 
     @Column({
-    type: DataType.STRING(255),
+    type: DataType.STRING(300),
     allowNull: false
     })
     url_foto_portada: string;

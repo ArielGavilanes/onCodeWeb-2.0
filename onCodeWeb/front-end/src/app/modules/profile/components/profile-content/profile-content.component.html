@@ -1,11 +1,13 @@
-<div class="profile-content">
-    <div *ngIf="usuario.id_rol === 1">
+<div class="title">
+    <div *ngIf="usuario?.id_rol === 1">
         <h1>Tus cursos</h1>
     </div>
-    <div *ngIf="usuario.id_rol === 2">
+    <div *ngIf="usuario?.id_rol === 2">
         <h1>Cursos que creaste</h1>
     </div>
-    <div *ngIf="cursos.length > 0; else sinResults">
+</div>
+<div *ngIf="cursos?.length > 0; else sinResults">
+    <div class="profile-content">
         <div *ngFor="let curso of cursos">
             <div class="card" style="width: 18rem;">
                 <img src="{{curso.url_foto_portada}}" class="card-img-top" alt="...">
@@ -18,30 +20,60 @@
             </div>
         </div>
     </div>
-    <ng-template #sinResults>
-        <h2>Sin resultados</h2>
-    </ng-template>
-    <div *ngIf="usuario.id_rol === 1">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearCurso">
-            Crear curso
-        </button>
+    <p></p>
+</div>
+<ng-template #sinResults>
+    <div class="profile-content">
+        <h2>Oops, parece que aqui no hay nada</h2>
+    </div>
+</ng-template>
+<div *ngIf="usuario?.id_rol === 2">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-dark btn-create" data-bs-toggle="modal" data-bs-target="#crearCurso">
+        Crear curso
+    </button>
 
-        <!-- Modal -->
-        <div class="modal fade" id="crearCurso" tabindex="-1" aria-labelledby="crearCursoLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="crearCursoLabel">Crear curso</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="crearCurso" tabindex="-1" aria-labelledby="crearCursoLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="crearCursoLabel">Crear curso</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form (submit)="createCurso()">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del curso" [(ngModel)]="datosForCreateCurso.nombre">
+                        </div>
+                        <div class="mb-3">
+                            <label for="descripcion" class="form-label">Descripcion</label>
+                            <input type="textarea" class="form-control" id="descripcion" name="descripcion" [(ngModel)]="datosForCreateCurso.descripcion" placeholder="Escribe una buena descripcion">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="premium" name="premium" [(ngModel)]="datosForCreateCurso.premium">
+                            <label class="form-check-label" for="premium">Este curso es premium?</label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="precio" class="form-label">Precio</label>
+                            <input type="number" class="form-control" step="0.01" id="precio" name="precio" [(ngModel)]="datosForCreateCurso.precio" placeholder="Precio del curso" [disabled]="!datosForCreateCurso.premium">
+                        </div>
+                        <div class="mb-3">
+                            <label for="url_foto_portada" class="form-label">URL foto de portada</label>
+                            <input type="text" class="form-control" id="url_foto_portada" name="url_foto_portada" [(ngModel)]="datosForCreateCurso.url_foto_portada" placeholder="URL de la imagen">
+                        </div>
+                        <div class="mb-3">
+                        <label for="id_categoria" class="form-label">Categoria</label>
+                        <select class="form-select" name="id_categoria" id="id_categoria" aria-label="" [(ngModel)]="datosForCreateCurso.id_categoria" name="id_tipo_contenido">
+                            <option *ngFor="let categoria of categorias" [value]="categoria.id_categoria">{{categoria.descripcion}}</option>
+                        </select>
+                        </div>
+                        <button type="submit" class="btn btn-dark">Crear curso</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cerrar</button>
                 </div>
             </div>
         </div>

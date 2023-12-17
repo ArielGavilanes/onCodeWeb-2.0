@@ -46,13 +46,13 @@ export class Estudiantes extends Model {
     email: string;
 
     @Column({
-    type: DataType.STRING(255),
+    type: DataType.STRING(300),
     allowNull: true
     })
     url_foto_perfil: string;
 
     @Column({
-    type: DataType.STRING(255),
+    type: DataType.STRING(300),
     allowNull: true
     })
     url_foto_portada: string;

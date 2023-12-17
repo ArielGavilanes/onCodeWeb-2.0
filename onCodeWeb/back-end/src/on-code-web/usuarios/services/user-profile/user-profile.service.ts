@@ -35,7 +35,12 @@ export class UserProfileService {
                         where: {
                             estado: true
                         },
-                        separate: true
+                        separate: true,
+                        include: [
+                            {
+                                model: this.cursosModel
+                            }
+                        ]
                     }
                 ]
             })

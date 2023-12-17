@@ -7,16 +7,31 @@
     aria-labelledby="offcanvasWithBothOptionsLabel" data-bs-theme="dark">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Menú</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn btn-icon" data-bs-dismiss="offcanvas" aria-label="Close"><i
+                class="fa-solid fa-circle-xmark"></i></button>
     </div>
     <div class="offcanvas-body">
         <div class="user-section mb-3">
-            <p class="fw-bold">Usuario: <span id="username">Nombre de Usuario</span></p>
+            <img class="sidebar-perfil" [src]="infoUsuario.url_foto_portada" alt="">
+            <h2><a class="perfil" routerLink="/perfil">&#64;{{usuario.usuario}}</a></h2>
         </div>
-        <button class="btn btn-primary d-block mb-2" onclick="irAPerfil()">Perfil</button>
-        <button class="btn btn-success d-block mb-2" onclick="irACategoria()">Categoría</button>
-        <button class="btn btn-info d-block mb-2" onclick="irACursos()">Cursos</button>
-        <button class="btn btn-warning d-block mb-2" onclick="irAConfiguraciones()">Configuraciones</button>
-        <button class="btn btn-danger d-block" onclick="cerrarSesion()">Cerrar Sesión</button>
+        <a [routerLink]="['/dashboard/search']" 
+            class="animated-button">Cursos<span><i class="fa-solid fa-graduation-cap"></i></span></a>
+    </div>
+    <hr class="hr">
+    <div class="offcanvas-footer">
+        <img class="sidebar-logout" [src]="infoUsuario.url_foto_perfil" alt="">
+        <div class="footer-text">
+            <h3>&#64;{{usuario.usuario}}</h3>
+            <div *ngIf="usuario.id_rol === 1">
+                <p>Estudiante</p>
+            </div>
+            <div *ngIf="usuario.id_rol === 2">
+                <p>Creador</p>
+            </div>
+        </div>
+        <button class="btn" (click)="logout()">
+            <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
     </div>
 </div>

@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ProfileImgComponent } from './components/profile-img/profile-img.component';
 import { ProfileContentComponent } from './components/profile-content/profile-content.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     ProfileRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule
   ]
 })
 export class ProfileModule { }

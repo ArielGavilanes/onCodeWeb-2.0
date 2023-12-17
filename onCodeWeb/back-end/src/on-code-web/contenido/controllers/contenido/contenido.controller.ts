@@ -11,7 +11,7 @@ export class ContenidoController {
 
     @Post('')
     async crearContenido(@Body() contenidoDTO: ContenidoDTO): Promise <any> {
-        console.log('DTO', contenidoDTO)
+        // console.log('DTO', contenidoDTO)
         return this.contenidoService.createContenido(contenidoDTO)
     }
 }

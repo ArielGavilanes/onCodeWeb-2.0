@@ -1,5 +1,5 @@
 export interface Cursos {
-    id_curso: number;
+    id_curso?: number;
     nombre: string;
     descripcion: string;
     premium: boolean;
