@@ -60,7 +60,6 @@ export class ProfileImgComponent implements OnInit{
       (err) => console.log('error en log', err),
     )
   }
-
   updateFotoCreador() {
     this.profileService.updateFotoCreador(this.updateFoto).subscribe(
       (res) => {

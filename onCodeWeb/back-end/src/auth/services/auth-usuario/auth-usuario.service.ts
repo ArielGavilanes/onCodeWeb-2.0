@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import * as jwt from 'jsonwebtoken';
 import { AuthUsuarioDTO } from 'src/auth/dto/authLogin.dto';
 import { UsuarioService } from 'src/on-code-web/usuarios/services/usuario/usuario.service';
 

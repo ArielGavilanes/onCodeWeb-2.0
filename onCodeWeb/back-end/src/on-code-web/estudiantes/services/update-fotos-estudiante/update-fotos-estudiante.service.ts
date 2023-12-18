@@ -11,6 +11,7 @@ export class UpdateFotosEstudianteService {
     ) {
     }
 
+    //Metodo para actualizar fotos de portada y de perfil
     async updateFotosCreador(estudiantesFotoDTO: EstudiantesFotoDTO): Promise<any> {
         const {
             cedulaDTO,
