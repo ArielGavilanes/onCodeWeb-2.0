@@ -1,23 +1,32 @@
-import { Table, Column, Model, DataType, ForeignKey, BelongsTo, HasMany, BelongsToMany } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+  HasMany,
+  BelongsToMany,
+} from 'sequelize-typescript';
 import { Contenido } from 'src/on-code-web/contenido/models/contenido.model';
 import { Cursos } from 'src/on-code-web/cursos/models/cursos.model';
 
-@Table({ timestamps: false }) 
+@Table({ timestamps: false })
 export class TipoContenido extends Model {
-    @Column({
+  @Column({
     type: DataType.INTEGER,
     allowNull: false,
     autoIncrement: true,
     primaryKey: true,
-    })
-    id_tipo_contenido: number
-    @Column({
+  })
+  id_tipo_contenido: number;
+  @Column({
     type: DataType.STRING,
     allowNull: false,
-    })
-    nombre: string;
+  })
+  nombre: string;
 
-    //Relationship with Contenido
-    @HasMany(() => Contenido)
-    TipoContenido_Contenido: Contenido[];
+  //Relationship with Contenido
+  @HasMany(() => Contenido)
+  TipoContenido_Contenido: Contenido[];
 }

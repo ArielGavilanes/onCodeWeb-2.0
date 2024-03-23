@@ -168,7 +168,9 @@
                     <p *ngIf="confirmPassword.errors?.['mustMatch']">Las contraseñas no coinciden.</p>
                 </div>
                 <div *ngIf="confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)" class="valid-feedback">
-                    ¡Contraseña correcta!
+                </div>
+                <div id="passwordHelpBlock" class="form-text">
+                    <p>{{contrasenaDisctinct}}</p>
                 </div>
             </div>
         </div>

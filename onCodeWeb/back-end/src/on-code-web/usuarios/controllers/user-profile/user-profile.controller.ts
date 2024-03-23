@@ -6,12 +6,14 @@ import { JwtAuthGuard } from 'src/auth/jwt/jwt-auth.guard';
 
 @Controller('user-profile')
 export class UserProfileController {
-    constructor(private userProfileService: UserProfileService) { }
+  constructor(private userProfileService: UserProfileService) {}
 
-    @UseGuards(JwtAuthGuard)
-    @Get('profile')
-    async getProfile(@Request() req) {
-        return await this.userProfileService.findUserInfoById(req.user.sub, req.user.id_rol);
-
-    }
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  async getProfile(@Request() req) {
+    return await this.userProfileService.findUserInfoById(
+      req.user.sub,
+      req.user.id_rol,
+    );
+  }
 }

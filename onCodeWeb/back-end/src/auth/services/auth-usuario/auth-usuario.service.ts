@@ -5,31 +5,25 @@ import { UsuarioService } from 'src/on-code-web/usuarios/services/usuario/usuari
 
 @Injectable()
 export class AuthUsuarioService {
+  constructor(
+    private jwtService: JwtService,
+    private usuariosService: UsuarioService,
+  ) {}
 
-    constructor(
-        private jwtService: JwtService,
-        private usuariosService: UsuarioService
-    ) { }
+  //Utilizar el servicio Usuario para comprobar las credenciales del usuario
+  async authUsuario(authUsuarioDTO: AuthUsuarioDTO): Promise<string | null> {
+    const usuarioVal = await this.usuariosService.loginUsuarios(authUsuarioDTO);
 
-    //Utilizar el servicio Usuario para comprobar las credenciales del usuario
-    async authUsuario(authUsuarioDTO: AuthUsuarioDTO): Promise<string | null> {
-        const usuarioVal = await this.usuariosService.loginUsuarios(authUsuarioDTO)
+    if (usuarioVal) {
+      const { id_usuario, id_rol, usuario, contrasena } = usuarioVal;
 
-        if (usuarioVal) {  
-            const {
-                id_usuario,
-                id_rol,
-                usuario,
-                contrasena
-            } = usuarioVal
+      const payload = { sub: id_usuario, usuario: usuario, id_rol, contrasena };
 
-            const payload = { sub: id_usuario, usuario: usuario, id_rol, contrasena };
+      const token = await this.jwtService.signAsync(payload);
 
-            const token = await this.jwtService.signAsync(payload);
-
-            return token;
-        }
-
-        return null
+      return token;
     }
+
+    return null;
+  }
 }

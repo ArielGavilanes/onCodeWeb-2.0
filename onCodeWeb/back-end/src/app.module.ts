@@ -8,11 +8,7 @@ import { OnCodeBankModule } from './on-code-bank/on-code-bank.module';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [
-    OnCodeWebModule,
-    OnCodeBankModule,
-    AuthModule,
-    ],
+  imports: [OnCodeWebModule, OnCodeBankModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })

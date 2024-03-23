@@ -14,6 +14,8 @@ export class SelectRolComponent implements OnInit {
 
     // Variable local para almacenar los roles en el componente
     roles: Roles[] = [];
+    contrasenaDisctinct: string = ''
+
 
     constructor(
       private authService: AuthService,
@@ -70,6 +72,7 @@ export class SelectRolComponent implements OnInit {
       console.log(this.nuevoUsuario)
     } else {
       console.log('Las contraseñas no coinciden')
+      this.contrasenaDisctinct = 'Las contraseñas no coinciden'
     }
   }
 }

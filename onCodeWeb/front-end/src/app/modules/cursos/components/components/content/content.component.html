@@ -40,11 +40,6 @@
             <!-- Modal -->
             <div class="modal fade" id="buyConfirm" tabindex="-1" aria-labelledby="buyConfirmLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <div *ngIf="infoUsuario.id_metodo_pago != null">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmar compra</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
                         <div class="modal-content">
                             <div class="modal-body">
                                 <h3>Estas seguro de comprar este curso?</h3>
@@ -56,25 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <div *ngIf="infoUsuario.id_metodo_pago === null">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Añadir metodo de pago</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <h3>Deberias primero añadir un metodo de pago</h3>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-dark" (click)="comprarCurso()">Confirmar
-                                    compra</button>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-            </div>
         </ng-template>
     </div>
 </div>

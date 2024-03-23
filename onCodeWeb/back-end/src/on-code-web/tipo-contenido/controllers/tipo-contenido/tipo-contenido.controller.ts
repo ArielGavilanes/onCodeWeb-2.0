@@ -4,13 +4,10 @@ import { TipoContenido } from '../../interfaces/tipo-contenido.interface';
 
 @Controller('tipo-contenido')
 export class TipoContenidoController {
+  constructor(private getTipoContenidoService: GetTipoContenidoService) {}
 
-    constructor(
-        private getTipoContenidoService: GetTipoContenidoService
-    ){}
-
-    @Get('')
-    async getTipoContenido(): Promise<TipoContenido[]> {
-        return this.getTipoContenidoService.getTipoContenido()
-    }
+  @Get('')
+  async getTipoContenido(): Promise<TipoContenido[]> {
+    return this.getTipoContenidoService.getTipoContenido();
+  }
 }

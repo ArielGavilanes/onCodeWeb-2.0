@@ -36,6 +36,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         } else {
             console.log('No se encontró token en el almacenamiento local');
         }
+        
         return user;
     }
 }
